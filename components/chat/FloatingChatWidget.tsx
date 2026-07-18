@@ -73,9 +73,9 @@ export function FloatingChatWidget() {
           type="button"
           aria-label="Close chat"
           onClick={close}
-          className={`chat-backdrop pointer-events-auto fixed inset-0 bg-nexora-bg/60 backdrop-blur-[2px] transition-opacity duration-300 ${
+          className={`chat-backdrop fixed inset-0 bg-nexora-bg/60 backdrop-blur-[2px] transition-opacity duration-300 ${
             isOpen ? "opacity-100" : "opacity-0"
-          }`}
+          } ${isLeadModalOpen ? "pointer-events-none" : "pointer-events-auto"}`}
         />
       )}
 

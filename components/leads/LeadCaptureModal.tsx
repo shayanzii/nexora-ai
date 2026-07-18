@@ -121,7 +121,7 @@ export function LeadCaptureModal({ isOpen, onClose, onSuccess }: LeadCaptureModa
 
   return (
     <div
-      className="absolute inset-0 z-10 flex items-end justify-center bg-nexora-bg/80 p-3 backdrop-blur-sm sm:items-center sm:p-4"
+      className="absolute inset-0 z-10 flex flex-col overflow-hidden bg-nexora-bg/80 p-3 backdrop-blur-sm sm:p-4"
       role="presentation"
       onClick={onClose}
     >
@@ -130,7 +130,7 @@ export function LeadCaptureModal({ isOpen, onClose, onSuccess }: LeadCaptureModa
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={descriptionId}
-        className="nexora-card glass-panel max-h-[92%] w-full overflow-y-auto rounded-2xl shadow-[0_0_40px_rgba(185,28,28,0.2)]"
+        className="nexora-card glass-panel flex min-h-0 w-full flex-1 flex-col overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(185,28,28,0.2)]"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="nexora-border flex items-start justify-between border-b px-4 py-3 sm:px-5">
@@ -170,7 +170,8 @@ export function LeadCaptureModal({ isOpen, onClose, onSuccess }: LeadCaptureModa
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-3 px-4 py-4 sm:px-5 sm:py-5" noValidate>
+          <form onSubmit={handleSubmit} className="flex min-h-0 flex-1 flex-col" noValidate>
+            <div className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4 sm:px-5 sm:py-5">
             <div>
               <label htmlFor="lead-fullName" className="mb-1.5 block text-xs font-medium text-nexora-text">
                 Full Name <span className="text-nexora-hover">*</span>
@@ -273,20 +274,23 @@ export function LeadCaptureModal({ isOpen, onClose, onSuccess }: LeadCaptureModa
                 </p>
               )}
             </div>
+            </div>
 
-            {submitError && (
-              <div className="rounded-xl border border-nexora-primary/30 bg-nexora-primary/10 px-3 py-2 text-xs text-nexora-text">
-                {submitError}
-              </div>
-            )}
+            <div className="shrink-0 space-y-3 px-4 pb-4 sm:px-5 sm:pb-5">
+              {submitError && (
+                <div className="rounded-xl border border-nexora-primary/30 bg-nexora-primary/10 px-3 py-2 text-xs text-nexora-text">
+                  {submitError}
+                </div>
+              )}
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="nexora-btn-primary w-full py-2.5 text-sm disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              {isSubmitting ? "Submitting..." : "Submit Request"}
-            </button>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="nexora-btn-primary w-full py-2.5 text-sm disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {isSubmitting ? "Submitting..." : "Submit Request"}
+              </button>
+            </div>
           </form>
         )}
       </div>
