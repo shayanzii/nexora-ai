@@ -105,6 +105,13 @@ export function useChat(isOpen: boolean) {
     }
   }, [input, isLoading]);
 
+  const appendAssistantMessage = useCallback((content: string) => {
+    setMessages((prev) => [
+      ...prev,
+      { id: crypto.randomUUID(), role: "assistant", content },
+    ]);
+  }, []);
+
   return {
     messages,
     input,
@@ -114,5 +121,6 @@ export function useChat(isOpen: boolean) {
     bottomRef,
     textareaRef,
     sendMessage,
+    appendAssistantMessage,
   };
 }

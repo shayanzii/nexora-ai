@@ -1,4 +1,5 @@
 import type { RefObject } from "react";
+import { ConsultationCTA } from "./ConsultationCTA";
 import { TypingIndicator } from "./TypingIndicator";
 import type { Message } from "./types";
 
@@ -6,12 +7,19 @@ type ChatMessagesProps = {
   messages: Message[];
   isLoading: boolean;
   bottomRef: RefObject<HTMLDivElement | null>;
+  onOpenConsultation?: () => void;
 };
 
-export function ChatMessages({ messages, isLoading, bottomRef }: ChatMessagesProps) {
+export function ChatMessages({
+  messages,
+  isLoading,
+  bottomRef,
+  onOpenConsultation,
+}: ChatMessagesProps) {
   return (
-    <div className="flex-1 space-y-3 overflow-y-auto overscroll-contain p-4 sm:p-5">
-      {messages.map((message) => {
+    <div className="flex flex-1 flex-col overflow-hidden">
+      <div className="flex-1 space-y-3 overflow-y-auto overscroll-contain p-4 sm:p-5">
+        {messages.map((message) => {
         const isUser = message.role === "user";
         const isTyping =
           !isUser && isLoading && message.content === "" && message.id !== "welcome";
@@ -23,17 +31,18 @@ export function ChatMessages({ messages, isLoading, bottomRef }: ChatMessagesPro
           >
             <div
               className={`max-w-[88%] rounded-2xl px-3.5 py-2.5 text-sm leading-6 sm:max-w-[80%] ${
-                isUser
-                  ? "border border-cyan-400/30 bg-gradient-to-r from-cyan-400/20 to-violet-500/20 text-white"
-                  : "border border-white/10 bg-white/5 text-slate-200"
+                isUser ? "nexora-chat-user-bubble" : "nexora-chat-assistant-bubble"
               }`}
             >
               {isTyping ? <TypingIndicator /> : message.content}
             </div>
           </div>
         );
-      })}
-      <div ref={bottomRef} />
+        })}
+        <div ref={bottomRef} />
+      </div>
+
+      {onOpenConsultation && <ConsultationCTA onOpen={onOpenConsultation} />}
     </div>
   );
 }

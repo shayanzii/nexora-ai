@@ -16,7 +16,7 @@ export function ChatInput({
   onSubmit,
 }: ChatInputProps) {
   return (
-    <form onSubmit={onSubmit} className="border-t border-white/10 p-3 sm:p-4">
+    <form onSubmit={onSubmit} className="nexora-border border-t p-3 sm:p-4">
       <div className="flex items-end gap-2">
         <textarea
           ref={textareaRef}
@@ -32,13 +32,13 @@ export function ChatInput({
           placeholder="Ask Nexora anything..."
           disabled={isLoading}
           aria-label="Message input"
-          className="max-h-24 min-h-[44px] flex-1 resize-none rounded-2xl border border-white/10 bg-white/5 px-3.5 py-2.5 text-sm text-white outline-none transition focus:border-cyan-400/40 disabled:opacity-60"
+          className="nexora-input max-h-24 min-h-[44px] flex-1 resize-none bg-nexora-surface px-3.5 py-2.5 text-sm disabled:opacity-60"
         />
         <button
           type="submit"
           disabled={isLoading || !input.trim()}
           aria-label="Send message"
-          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 via-sky-500 to-violet-500 text-slate-950 shadow-[0_0_24px_rgba(34,211,238,0.25)] transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-50"
+          className="nexora-btn-primary inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full disabled:cursor-not-allowed disabled:opacity-50"
         >
           {isLoading ? (
             <span className="text-xs font-semibold">···</span>

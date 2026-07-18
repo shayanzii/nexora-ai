@@ -1,13 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --background: #020617;
-  --foreground: #f8fafc;
+  --nexora-bg: #0a0a0a;
+  --nexora-surface: #141414;
+  --nexora-card: #1c1c1c;
+  --nexora-primary: #b91c1c;
+  --nexora-hover: #dc2626;
+  --nexora-border: rgba(255, 255, 255, 0.08);
+  --nexora-text: #ffffff;
+  --nexora-text-secondary: #a1a1aa;
+  --nexora-glow: rgba(185, 28, 28, 0.35);
+  --nexora-glow-soft: rgba(185, 28, 28, 0.15);
+  --nexora-glow-hover: rgba(220, 38, 38, 0.45);
+
+  --background: var(--nexora-bg);
+  --foreground: var(--nexora-text);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--nexora-bg);
+  --color-foreground: var(--nexora-text);
+  --color-nexora-bg: #0a0a0a;
+  --color-nexora-surface: #141414;
+  --color-nexora-card: #1c1c1c;
+  --color-nexora-primary: #b91c1c;
+  --color-nexora-hover: #dc2626;
+  --color-nexora-muted: #a1a1aa;
+  --color-nexora-text: #ffffff;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -19,20 +38,198 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(135deg, #020617 0%, #050816 45%, #111827 100%);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--nexora-bg);
+  color: var(--nexora-text);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
 ::selection {
-  background: rgba(34, 211, 238, 0.4);
-  color: #f8fafc;
+  background: rgba(185, 28, 28, 0.45);
+  color: var(--nexora-text);
+}
+
+/* ── Layout ── */
+.nexora-page-bg {
+  background:
+    radial-gradient(circle at top left, rgba(185, 28, 28, 0.1), transparent 34%),
+    radial-gradient(circle at top right, rgba(220, 38, 38, 0.06), transparent 40%),
+    linear-gradient(160deg, #0a0a0a 0%, #141414 48%, #0a0a0a 100%);
 }
 
 .glass-panel {
   backdrop-filter: blur(20px);
 }
 
+.nexora-glow {
+  box-shadow: 0 0 60px var(--nexora-glow-soft);
+}
+
+/* ── Borders ── */
+.nexora-border {
+  border-color: var(--nexora-border);
+}
+
+/* ── Typography ── */
+.nexora-eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--nexora-hover);
+}
+
+.nexora-link {
+  color: var(--nexora-primary);
+  transition: color 0.2s ease;
+}
+
+.nexora-link:hover {
+  color: var(--nexora-hover);
+}
+
+/* ── Buttons ── */
+.nexora-btn-primary {
+  border-radius: 9999px;
+  background: linear-gradient(to right, var(--nexora-primary), var(--nexora-hover));
+  color: var(--nexora-text);
+  font-weight: 600;
+  box-shadow: 0 0 30px var(--nexora-glow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nexora-btn-primary:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 40px var(--nexora-glow-hover);
+}
+
+.nexora-btn-primary:focus-visible {
+  outline: 2px solid var(--nexora-hover);
+  outline-offset: 2px;
+}
+
+.nexora-btn-secondary {
+  border-radius: 9999px;
+  border: 1px solid var(--nexora-border);
+  background: var(--nexora-card);
+  color: var(--nexora-text);
+  font-weight: 600;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.nexora-btn-secondary:hover {
+  border-color: rgba(185, 28, 28, 0.4);
+  background: color-mix(in srgb, var(--nexora-card) 80%, transparent);
+}
+
+.nexora-btn-secondary:focus-visible {
+  outline: 2px solid var(--nexora-primary);
+  outline-offset: 2px;
+}
+
+.nexora-btn-ghost {
+  border-radius: 9999px;
+  border: 1px solid rgba(185, 28, 28, 0.4);
+  background: rgba(185, 28, 28, 0.1);
+  color: var(--nexora-text);
+  font-weight: 500;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.nexora-btn-ghost:hover {
+  border-color: var(--nexora-hover);
+  background: rgba(185, 28, 28, 0.2);
+}
+
+/* ── Form controls ── */
+.nexora-input {
+  border-radius: 1rem;
+  border: 1px solid var(--nexora-border);
+  background: var(--nexora-bg);
+  color: var(--nexora-text);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nexora-input::placeholder {
+  color: var(--nexora-text-secondary);
+}
+
+.nexora-input:focus {
+  border-color: rgba(185, 28, 28, 0.5);
+  box-shadow: 0 0 0 1px rgba(185, 28, 28, 0.3);
+}
+
+/* ── Cards & surfaces ── */
+.nexora-card {
+  border: 1px solid var(--nexora-border);
+  background: var(--nexora-card);
+}
+
+.nexora-surface {
+  border: 1px solid var(--nexora-border);
+  background: var(--nexora-surface);
+}
+
+.nexora-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(185, 28, 28, 0.3);
+  background: rgba(185, 28, 28, 0.1);
+  color: var(--nexora-text);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.nexora-icon-box {
+  border-radius: 1rem;
+  background: linear-gradient(
+    to bottom right,
+    rgba(185, 28, 28, 0.25),
+    rgba(220, 38, 38, 0.12)
+  );
+  box-shadow: 0 0 20px var(--nexora-glow-soft);
+}
+
+.nexora-nav-link {
+  color: var(--nexora-text-secondary);
+  transition: color 0.2s ease;
+}
+
+.nexora-nav-link:hover {
+  color: var(--nexora-hover);
+}
+
+.nexora-nav-link:focus-visible {
+  outline: 2px solid var(--nexora-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Chat ── */
+.nexora-chat-fab {
+  background: linear-gradient(to right, var(--nexora-primary), var(--nexora-hover));
+  color: var(--nexora-text);
+  box-shadow: 0 0 40px var(--nexora-glow);
+}
+
+.nexora-chat-user-bubble {
+  border: 1px solid rgba(185, 28, 28, 0.35);
+  background: linear-gradient(
+    to right,
+    rgba(185, 28, 28, 0.2),
+    rgba(220, 38, 38, 0.12)
+  );
+  color: var(--nexora-text);
+}
+
+.nexora-chat-assistant-bubble {
+  border: 1px solid var(--nexora-border);
+  background: var(--nexora-surface);
+  color: var(--nexora-text-secondary);
+}
+
+/* ── Animations ── */
 @keyframes float {
   0%,
   100% {
@@ -62,6 +259,7 @@ body {
 
 .typing-dot {
   animation: typing-bounce 1.4s ease-in-out infinite;
+  background-color: var(--nexora-hover);
 }
 
 .typing-dot:nth-child(2) {
@@ -75,10 +273,10 @@ body {
 @keyframes fab-pulse {
   0%,
   100% {
-    box-shadow: 0 0 40px rgba(34, 211, 238, 0.35);
+    box-shadow: 0 0 40px var(--nexora-glow);
   }
   50% {
-    box-shadow: 0 0 56px rgba(34, 211, 238, 0.55);
+    box-shadow: 0 0 56px var(--nexora-glow-hover);
   }
 }
 
@@ -86,13 +284,54 @@ body {
   animation: fab-pulse 3s ease-in-out infinite;
 }
 
+.chat-fab-group .chat-fab {
+  box-shadow: 0 0 40px var(--nexora-glow);
+}
+
+.chat-fab-group:hover .chat-fab {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 48px var(--nexora-glow-hover),
+    0 0 80px var(--nexora-glow-soft);
+}
+
+.chat-fab-group:hover .chat-fab-label {
+  border-color: rgba(185, 28, 28, 0.4);
+  box-shadow: 0 0 36px var(--nexora-glow-soft);
+  transform: translateX(-2px);
+}
+
+@keyframes tooltip-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-tooltip-enter {
+  animation: tooltip-enter 0.35s ease-out forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .chat-panel,
   .chat-backdrop,
   .chat-fab,
   .typing-dot,
-  .chat-fab-pulse {
+  .chat-fab-pulse,
+  .chat-tooltip-enter,
+  .animate-float,
+  .nexora-btn-primary,
+  .nexora-btn-secondary {
     animation: none !important;
     transition: none !important;
+  }
+
+  .chat-fab-group:hover .chat-fab,
+  .nexora-btn-primary:hover {
+    transform: none;
   }
 }
