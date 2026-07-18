@@ -2,7 +2,7 @@
 
 import { CalendarCheck, X } from "lucide-react";
 import { FormEvent, useEffect, useId, useState } from "react";
-import { saveLead } from "@/lib/leads/storage";
+import { LeadSubmitError, submitLead } from "@/lib/leads/submit-lead";
 import type { LeadFormData } from "@/lib/leads/types";
 import { hasLeadFormErrors, validateLeadForm } from "@/lib/leads/validation";
 
@@ -89,15 +89,29 @@ export function LeadCaptureModal({ isOpen, onClose, onSuccess }: LeadCaptureModa
     setIsSubmitting(true);
 
     try {
-      saveLead(form);
+      await submitLead(form);
+
       if (onSuccess) {
         onSuccess();
         onClose();
       } else {
         setIsSubmitted(true);
       }
-    } catch {
-      setSubmitError("Unable to save your request. Please try again.");
+    } catch (error) {
+      if (
+        error instanceof LeadSubmitError &&
+        error.fieldErrors &&
+        hasLeadFormErrors(error.fieldErrors)
+      ) {
+        setFieldErrors(error.fieldErrors);
+        return;
+      }
+
+      setSubmitError(
+        error instanceof LeadSubmitError
+          ? error.message
+          : "Unable to save your request. Please try again.",
+      );
     } finally {
       setIsSubmitting(false);
     }
