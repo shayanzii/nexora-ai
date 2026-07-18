@@ -10,6 +10,7 @@ create table if not exists public.leads (
   company text,
   budget text,
   project_description text not null,
+  status text not null default 'new',
   submitted_at timestamptz not null default now()
 );
 

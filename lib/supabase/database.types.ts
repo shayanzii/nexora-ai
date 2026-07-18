@@ -9,6 +9,7 @@ export type LeadRow = {
   company: string | null;
   budget: string | null;
   project_description: string;
+  status: string;
   submitted_at: string;
 };
 

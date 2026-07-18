@@ -1,6 +1,8 @@
 import type { LeadFormData, LeadSubmission } from "@/lib/leads/types";
 import type { LeadInsert, LeadRow } from "@/lib/supabase/database.types";
 
+export const DEFAULT_LEAD_STATUS = "new";
+
 export function leadFormToInsert(data: LeadFormData): LeadInsert {
   return {
     full_name: data.fullName.trim(),
@@ -8,6 +10,7 @@ export function leadFormToInsert(data: LeadFormData): LeadInsert {
     company: data.company.trim() || null,
     budget: data.budget.trim() || null,
     project_description: data.projectDescription.trim(),
+    status: DEFAULT_LEAD_STATUS,
   };
 }
 

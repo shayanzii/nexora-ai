@@ -3,6 +3,7 @@ import { leadFormToInsert, leadRowToSubmission } from "@/lib/leads/map-lead";
 import type { LeadFormData } from "@/lib/leads/types";
 import { hasLeadFormErrors, validateLeadForm } from "@/lib/leads/validation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { getSupabaseServiceRoleKey, getSupabaseUrl } from "@/lib/supabase/env";
 
 export const runtime = "nodejs";
 
@@ -54,14 +55,24 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Validation failed.", errors }, { status: 400 });
   }
 
+  const insertPayload = leadFormToInsert(formData);
+
   const { data, error } = await supabase
     .from("leads")
-    .insert(leadFormToInsert(formData))
+    .insert(insertPayload)
     .select("*")
     .single();
 
   if (error) {
-    console.error("[/api/leads]", error);
+    console.error("[/api/leads] Supabase insert failed", {
+      message: error.message,
+      code: error.code,
+      details: error.details,
+      hint: error.hint,
+      insertPayload,
+      supabaseUrl: getSupabaseUrl(),
+      hasServiceRoleKey: Boolean(getSupabaseServiceRoleKey()),
+    });
 
     if (error.code === "42P01") {
       return jsonError(
@@ -70,7 +81,7 @@ export async function POST(request: Request) {
       );
     }
 
-    return jsonError("Failed to save lead.", 502);
+    return jsonError(error.message, 502);
   }
 
   return NextResponse.json(
