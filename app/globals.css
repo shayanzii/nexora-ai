@@ -46,3 +46,53 @@ body {
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
+@keyframes typing-bounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+.typing-dot {
+  animation: typing-bounce 1.4s ease-in-out infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes fab-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 40px rgba(34, 211, 238, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 56px rgba(34, 211, 238, 0.55);
+  }
+}
+
+.chat-fab-pulse {
+  animation: fab-pulse 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-panel,
+  .chat-backdrop,
+  .chat-fab,
+  .typing-dot,
+  .chat-fab-pulse {
+    animation: none !important;
+    transition: none !important;
+  }
+}
