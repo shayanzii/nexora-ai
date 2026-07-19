@@ -22,6 +22,6 @@ export function leadRowToSubmission(row: LeadRow): LeadSubmission {
     company: row.company ?? "",
     budget: row.budget ?? "",
     projectDescription: row.project_description,
-    submittedAt: row.submitted_at,
+    submittedAt: row.created_at,
   };
 }

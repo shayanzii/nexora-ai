@@ -1,34 +1,25 @@
-import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { createBrowserClient } from "@supabase/ssr";
+import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "./database.types";
-import { getSupabaseAnonKey, getSupabaseUrl, isSupabaseBrowserConfigured } from "./env";
+import {
+  getSupabasePublishableKey,
+  getSupabaseUrl,
+  isSupabaseBrowserConfigured,
+} from "./env";
 
 export type SupabaseBrowserClient = SupabaseClient<Database>;
 
-let browserClient: SupabaseBrowserClient | null = null;
-
 /**
- * Browser-safe Supabase client (anon key).
- * Returns null when env vars are not configured.
+ * Browser Supabase client (publishable key + cookie session).
+ * Uses @supabase/ssr singleton — safe to call from any Client Component.
  */
 export function createSupabaseBrowserClient(): SupabaseBrowserClient | null {
   if (!isSupabaseBrowserConfigured()) {
     return null;
   }
 
-  if (browserClient) {
-    return browserClient;
-  }
-
-  browserClient = createClient<Database>(
+  return createBrowserClient<Database>(
     getSupabaseUrl()!,
-    getSupabaseAnonKey()!,
-    {
-      auth: {
-        persistSession: true,
-        autoRefreshToken: true,
-      },
-    },
+    getSupabasePublishableKey()!,
   );
-
-  return browserClient;
 }

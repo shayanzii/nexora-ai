@@ -30,9 +30,10 @@ type LeadCaptureModalProps = {
   isOpen: boolean;
   onClose: () => void;
   onSuccess?: () => void;
+  fullScreen?: boolean;
 };
 
-export function LeadCaptureModal({ isOpen, onClose, onSuccess }: LeadCaptureModalProps) {
+export function LeadCaptureModal({ isOpen, onClose, onSuccess, fullScreen = false }: LeadCaptureModalProps) {
   const titleId = useId();
   const descriptionId = useId();
   const [form, setForm] = useState<LeadFormData>(EMPTY_FORM);
@@ -119,9 +120,17 @@ export function LeadCaptureModal({ isOpen, onClose, onSuccess }: LeadCaptureModa
 
   if (!isOpen) return null;
 
+  const overlayClass = fullScreen
+    ? "fixed inset-0 z-[10000] flex items-center justify-center bg-nexora-bg/80 p-4 backdrop-blur-sm"
+    : "absolute inset-0 z-10 flex flex-col overflow-hidden bg-nexora-bg/80 p-3 backdrop-blur-sm sm:p-4";
+
+  const dialogWrapClass = fullScreen
+    ? "nexora-card glass-panel flex max-h-[min(90dvh,720px)] w-full max-w-lg flex-col overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(185,28,28,0.2)]"
+    : "nexora-card glass-panel flex min-h-0 w-full flex-1 flex-col overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(185,28,28,0.2)]";
+
   return (
     <div
-      className="absolute inset-0 z-10 flex flex-col overflow-hidden bg-nexora-bg/80 p-3 backdrop-blur-sm sm:p-4"
+      className={overlayClass}
       role="presentation"
       onClick={onClose}
     >
@@ -130,7 +139,7 @@ export function LeadCaptureModal({ isOpen, onClose, onSuccess }: LeadCaptureModa
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={descriptionId}
-        className="nexora-card glass-panel flex min-h-0 w-full flex-1 flex-col overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(185,28,28,0.2)]"
+        className={dialogWrapClass}
         onClick={(event) => event.stopPropagation()}
       >
         <div className="nexora-border flex items-start justify-between border-b px-4 py-3 sm:px-5">

@@ -66,26 +66,34 @@ export function FloatingChatWidget() {
     return () => document.removeEventListener("keydown", handleEscape);
   }, [isOpen, isLeadModalOpen, close, closeLeadModal]);
 
+  useEffect(() => {
+    function handleOpenConsultation() {
+      setIsLeadModalOpen(true);
+    }
+
+    window.addEventListener("nexora:open-consultation", handleOpenConsultation);
+    return () => window.removeEventListener("nexora:open-consultation", handleOpenConsultation);
+  }, []);
+
   return (
-    <div className="pointer-events-none fixed inset-0 z-[9999]">
-      {isVisible && (
+    <>
+      {isVisible && isOpen && !isLeadModalOpen && (
         <button
           type="button"
           aria-label="Close chat"
           onClick={close}
-          className={`chat-backdrop fixed inset-0 bg-nexora-bg/60 backdrop-blur-[2px] transition-opacity duration-300 ${
-            isOpen ? "opacity-100" : "opacity-0"
-          } ${isLeadModalOpen ? "pointer-events-none" : "pointer-events-auto"}`}
+          className="chat-backdrop fixed inset-0 z-40 bg-nexora-bg/60 backdrop-blur-[2px] transition-opacity duration-300"
         />
       )}
 
-      <div className="pointer-events-none fixed bottom-4 right-4 flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
+      <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
+        {(isOpen || isVisible) && (
         <div
           role="dialog"
           aria-modal="true"
           aria-labelledby={titleId}
           aria-hidden={!isOpen}
-          className={`chat-panel glass-panel nexora-card pointer-events-auto relative flex flex-col overflow-hidden rounded-3xl shadow-[0_0_80px_rgba(185,28,28,0.15)] backdrop-blur-xl transition-all duration-300 ease-out ${
+          className={`chat-panel glass-panel nexora-card relative flex flex-col overflow-hidden rounded-3xl shadow-[0_0_80px_rgba(185,28,28,0.15)] backdrop-blur-xl transition-all duration-300 ease-out ${
             isOpen
               ? "chat-panel-open translate-y-0 scale-100 opacity-100"
               : "chat-panel-closed pointer-events-none translate-y-4 scale-95 opacity-0"
@@ -135,15 +143,27 @@ export function FloatingChatWidget() {
             onSubmit={sendMessage}
           />
 
-          <LeadCaptureModal
-            isOpen={isLeadModalOpen}
-            onClose={closeLeadModal}
-            onSuccess={handleLeadSuccess}
-          />
+          {!isLeadModalOpen ? null : (
+            <LeadCaptureModal
+              isOpen={isLeadModalOpen}
+              onClose={closeLeadModal}
+              onSuccess={handleLeadSuccess}
+            />
+          )}
         </div>
+        )}
 
         <ChatLauncher isOpen={isOpen} onToggle={toggle} />
       </div>
-    </div>
+
+      {isLeadModalOpen && !isOpen ? (
+        <LeadCaptureModal
+          isOpen={isLeadModalOpen}
+          onClose={closeLeadModal}
+          onSuccess={handleLeadSuccess}
+          fullScreen
+        />
+      ) : null}
+    </>
   );
 }

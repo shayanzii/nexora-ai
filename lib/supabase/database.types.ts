@@ -10,12 +10,12 @@ export type LeadRow = {
   budget: string | null;
   project_description: string;
   status: string;
-  submitted_at: string;
+  created_at: string;
 };
 
-export type LeadInsert = Omit<LeadRow, "id" | "submitted_at"> & {
+export type LeadInsert = Omit<LeadRow, "id" | "created_at"> & {
   id?: string;
-  submitted_at?: string;
+  created_at?: string;
 };
 
 export type Database = {

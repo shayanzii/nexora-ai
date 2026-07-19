@@ -11,10 +11,10 @@ create table if not exists public.leads (
   budget text,
   project_description text not null,
   status text not null default 'new',
-  submitted_at timestamptz not null default now()
+  created_at timestamptz not null default now()
 );
 
-create index if not exists leads_submitted_at_idx on public.leads (submitted_at desc);
+create index if not exists leads_created_at_idx on public.leads (created_at desc);
 create index if not exists leads_email_idx on public.leads (email);
 
 comment on table public.leads is 'Consultation requests from the Nexora AI lead capture form.';
