@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ChatWidgetLoader } from "@/components/chat/ChatWidgetLoader";
 import "./globals.css";
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         {children}
         <ChatWidgetLoader />
+        <GoogleAnalytics gaId="G-6C6MDRSXDM" />
       </body>
     </html>
   );
