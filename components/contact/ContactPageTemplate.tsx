@@ -4,7 +4,7 @@ import { ServiceMarketingFooter, ServiceMarketingHeader } from "@/components/ser
 
 export function ContactPageTemplate() {
   return (
-    <div className="nexora-page-bg min-h-screen text-nexora-muted">
+    <div className="nexora-page-bg nexora-marketing-page min-h-screen text-nexora-muted">
       <ServiceMarketingHeader activeNav="contact" />
 
       <main>

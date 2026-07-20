@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { allServicesList } from "@/lib/services/content";
 import { MarketingNavLinks, type MarketingActiveNav } from "./MarketingNavLinks";
+import { MobileNavMenu } from "./MobileNavMenu";
 
 type ServiceMarketingHeaderProps = {
   activeNav?: MarketingActiveNav;
@@ -18,6 +19,7 @@ export function ServiceMarketingHeader({ activeNav, currentSlug }: ServiceMarket
           Nexora AI
         </Link>
         <MarketingNavLinks activeNav={activeNav} currentSlug={currentSlug} />
+        <MobileNavMenu activeNav={activeNav} />
       </nav>
     </header>
   );
@@ -25,10 +27,11 @@ export function ServiceMarketingHeader({ activeNav, currentSlug }: ServiceMarket
 
 export function ServiceMarketingFooter() {
   return (
-    <footer className="nexora-border border-t px-6 py-10 lg:px-8">
+    <footer className="nexora-marketing-footer nexora-border border-t px-6 py-10 lg:px-8">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 text-sm text-nexora-muted md:flex-row">
-        <p>© 2026 Nexora AI. Build smarter, move faster.</p>
-        <div className="flex flex-wrap justify-center gap-4">
+        <p className="text-center md:text-left">© 2026 Nexora AI. Build smarter, move faster.</p>
+
+        <div className="hidden flex-wrap justify-center gap-4 md:flex">
           <Link href="/" className="transition hover:text-nexora-hover">
             Home
           </Link>
@@ -56,6 +59,18 @@ export function ServiceMarketingFooter() {
               {service.title}
             </Link>
           ))}
+        </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 md:hidden">
+          <Link href="/privacy" className="transition hover:text-nexora-hover">
+            Privacy Policy
+          </Link>
+          <Link href="/terms" className="transition hover:text-nexora-hover">
+            Terms
+          </Link>
+          <Link href="/contact" className="transition hover:text-nexora-hover">
+            Contact
+          </Link>
         </div>
       </div>
     </footer>

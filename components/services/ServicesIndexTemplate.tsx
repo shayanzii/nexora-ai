@@ -5,7 +5,7 @@ import { ServiceMarketingFooter, ServiceMarketingHeader } from "./ServiceMarketi
 
 export function ServicesIndexTemplate() {
   return (
-    <div className="nexora-page-bg min-h-screen text-nexora-muted">
+    <div className="nexora-page-bg nexora-marketing-page min-h-screen text-nexora-muted">
       <ServiceMarketingHeader activeNav="services" currentSlug="index" />
 
       <main>

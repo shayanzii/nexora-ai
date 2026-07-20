@@ -27,7 +27,7 @@ export function BookConsultationButton({
     <button
       type="button"
       onClick={handleClick}
-      className={`${variantClasses[variant]} px-6 py-3 text-center font-semibold ${className}`}
+      className={`${variantClasses[variant]} w-full px-6 py-3 text-center font-semibold sm:w-auto ${className}`}
     >
       {children}
     </button>

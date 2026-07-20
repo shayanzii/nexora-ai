@@ -10,7 +10,7 @@ type PortfolioCaseStudyTemplateProps = {
 
 export function PortfolioCaseStudyTemplate({ project }: PortfolioCaseStudyTemplateProps) {
   return (
-    <div className="nexora-page-bg min-h-screen text-nexora-muted">
+    <div className="nexora-page-bg nexora-marketing-page min-h-screen text-nexora-muted">
       <ServiceMarketingHeader activeNav="portfolio" />
 
       <main>

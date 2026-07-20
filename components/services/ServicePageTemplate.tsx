@@ -9,7 +9,7 @@ type ServicePageTemplateProps = {
 
 export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
   return (
-    <div className="nexora-page-bg min-h-screen text-nexora-muted">
+    <div className="nexora-page-bg nexora-marketing-page min-h-screen text-nexora-muted">
       <ServiceMarketingHeader activeNav="services" currentSlug={content.slug} />
 
       <main>
