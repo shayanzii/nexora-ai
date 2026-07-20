@@ -493,7 +493,7 @@ body {
   .pricing-orb-float-delayed,
   .pricing-guarantee-icon,
   .mobile-nav-panel,
-  .mobile-nav-backdrop,
+  .mobile-nav-close,
   .why-choose-card {
     animation: none !important;
     transition: none !important;
@@ -513,9 +513,26 @@ body {
     transform: none !important;
   }
 
+  .mobile-nav-close {
+    opacity: 1 !important;
+  }
+
   .why-choose-card:hover {
     transform: none;
   }
+}
+
+/* ── Mobile navigation overlay ── */
+.mobile-nav-panel {
+  min-height: 100dvh;
+  min-height: 100vh;
+  touch-action: none;
+  -webkit-overflow-scrolling: auto;
+}
+
+.mobile-nav-close {
+  min-width: 3rem;
+  min-height: 3rem;
 }
 
 /* ── Mobile marketing UX (< md) ── */
