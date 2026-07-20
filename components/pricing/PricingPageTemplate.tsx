@@ -13,7 +13,7 @@ export function PricingPageTemplate() {
     <div className="nexora-page-bg nexora-marketing-page min-h-screen text-nexora-muted">
       <ServiceMarketingHeader activeNav="pricing" />
 
-      <main>
+      <main id="main-content">
         <section className="relative overflow-hidden px-6 py-24 lg:px-8 lg:py-32">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,_rgba(185,28,28,0.12),_transparent_55%)]" />
           <div className="absolute -right-24 top-20 -z-10 h-72 w-72 rounded-full bg-nexora-primary/10 blur-3xl pricing-orb-float" />

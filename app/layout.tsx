@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ChatWidgetLoader } from "@/components/chat/ChatWidgetLoader";
+import { SkipToMain } from "@/components/layout/SkipToMain";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { createPageMetadata, getSiteUrl, organizationJsonLd, DEFAULT_DESCRIPTION, SITE_NAME } from "@/lib/site/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,8 +18,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nexora AI | Premium AI Automation for Modern Businesses",
-  description: "Nexora AI delivers premium automation, analytics, and AI strategy for modern companies.",
+  metadataBase: new URL(getSiteUrl()),
+  title: {
+    default: "Nexora AI | Premium AI Automation for Modern Businesses",
+    template: "%s | Nexora AI",
+  },
+  description: DEFAULT_DESCRIPTION,
+  alternates: { canonical: getSiteUrl() },
+  openGraph: {
+    type: "website",
+    locale: "en_CA",
+    url: getSiteUrl(),
+    siteName: SITE_NAME,
+    title: "Nexora AI | Premium AI Automation for Modern Businesses",
+    description: DEFAULT_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nexora AI | Premium AI Automation for Modern Businesses",
+    description: DEFAULT_DESCRIPTION,
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -26,10 +48,12 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-CA"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <SkipToMain />
+        <JsonLd data={organizationJsonLd()} />
         {children}
         <ChatWidgetLoader />
         <GoogleAnalytics gaId="G-6C6MDRSXDM" />

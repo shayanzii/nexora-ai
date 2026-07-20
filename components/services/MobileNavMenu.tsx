@@ -84,6 +84,7 @@ export function MobileNavMenu({ activeNav }: MobileNavMenuProps) {
         className={`mobile-nav-panel fixed right-0 top-0 z-[95] flex h-full w-[min(100vw-3rem,320px)] flex-col border-l border-nexora-border bg-nexora-bg/95 shadow-[-8px_0_40px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-transform duration-300 ease-out ${
           isOpen ? "translate-x-0" : "pointer-events-none translate-x-full"
         }`}
+        {...(!isOpen ? { inert: true } : {})}
       >
         <div className="nexora-border flex items-center justify-between border-b px-5 py-4">
           <span className="text-xs font-semibold uppercase tracking-[0.35em] text-nexora-primary">Menu</span>

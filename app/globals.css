@@ -35,6 +35,96 @@ html {
   scroll-behavior: smooth;
 }
 
+.nexora-skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100%;
+  z-index: 200;
+  border-radius: 0.75rem;
+  background: var(--nexora-primary);
+  color: var(--nexora-text);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.nexora-skip-link:focus {
+  top: 1rem;
+  outline: 2px solid var(--nexora-hover);
+  outline-offset: 2px;
+}
+
+.nexora-section {
+  padding: 5rem 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .nexora-section {
+    padding: 6rem 2rem;
+  }
+}
+
+.nexora-section-hero {
+  padding: 6rem 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .nexora-section-hero {
+    padding: 8rem 2rem;
+  }
+}
+
+.nexora-heading-hero {
+  font-size: 2.25rem;
+  line-height: 1.15;
+  font-weight: 600;
+  color: var(--nexora-text);
+}
+
+@media (min-width: 640px) {
+  .nexora-heading-hero {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nexora-heading-hero {
+    font-size: 3.75rem;
+  }
+}
+
+.nexora-heading-section {
+  margin-top: 0.75rem;
+  font-size: 1.875rem;
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--nexora-text);
+}
+
+@media (min-width: 640px) {
+  .nexora-heading-section {
+    font-size: 2.25rem;
+  }
+}
+
+.nexora-preview-card {
+  display: block;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nexora-preview-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(185, 28, 28, 0.35);
+  box-shadow: 0 0 40px rgba(185, 28, 28, 0.1);
+}
+
+.nexora-preview-card:focus-visible {
+  outline: 2px solid var(--nexora-hover);
+  outline-offset: 2px;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -189,6 +279,18 @@ body {
     rgba(220, 38, 38, 0.12)
   );
   box-shadow: 0 0 20px var(--nexora-glow-soft);
+}
+
+.why-choose-card {
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.25);
+}
+
+.why-choose-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(185, 28, 28, 0.4);
+  box-shadow:
+    0 0 40px rgba(185, 28, 28, 0.12),
+    0 0 60px rgba(185, 28, 28, 0.08);
 }
 
 .nexora-nav-link {
@@ -391,7 +493,8 @@ body {
   .pricing-orb-float-delayed,
   .pricing-guarantee-icon,
   .mobile-nav-panel,
-  .mobile-nav-backdrop {
+  .mobile-nav-backdrop,
+  .why-choose-card {
     animation: none !important;
     transition: none !important;
   }
@@ -408,6 +511,10 @@ body {
 
   .mobile-nav-panel {
     transform: none !important;
+  }
+
+  .why-choose-card:hover {
+    transform: none;
   }
 }
 

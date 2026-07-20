@@ -1,3 +1,5 @@
+import { NEXORA_CONTACT_EMAIL, NEXORA_SALES_MAILTO } from "@/lib/site/contact";
+
 export type PricingPlanId = "starter" | "growth" | "pro" | "enterprise";
 
 export type PricingPlan = {
@@ -40,7 +42,7 @@ export const pricingPlans: PricingPlan[] = [
       "14 days support",
     ],
     cta: "consultation",
-    ctaLabel: "Book Free Consultation",
+    ctaLabel: "Book Your Free AI Strategy Call",
   },
   {
     id: "growth",
@@ -58,7 +60,7 @@ export const pricingPlans: PricingPlan[] = [
       "30 days support",
     ],
     cta: "consultation",
-    ctaLabel: "Book Free Consultation",
+    ctaLabel: "Book Your Free AI Strategy Call",
   },
   {
     id: "pro",
@@ -74,7 +76,7 @@ export const pricingPlans: PricingPlan[] = [
       "Custom Integrations",
     ],
     cta: "consultation",
-    ctaLabel: "Book Free Consultation",
+    ctaLabel: "Book Your Free AI Strategy Call",
   },
   {
     id: "enterprise",
@@ -163,5 +165,5 @@ export const moneyBackGuarantee = {
   ],
 };
 
-export const SALES_EMAIL = "hello@nexora.ai";
-export const SALES_MAILTO = `mailto:${SALES_EMAIL}?subject=${encodeURIComponent("Nexora AI — Sales Inquiry")}`;
+export const SALES_EMAIL = NEXORA_CONTACT_EMAIL;
+export const SALES_MAILTO = NEXORA_SALES_MAILTO;

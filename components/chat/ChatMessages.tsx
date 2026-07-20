@@ -18,7 +18,7 @@ export function ChatMessages({
 }: ChatMessagesProps) {
   return (
     <div className="flex flex-1 flex-col overflow-hidden">
-      <div className="flex-1 space-y-3 overflow-y-auto overscroll-contain p-4 sm:p-5">
+      <div className="flex-1 space-y-3 overflow-y-auto overscroll-contain p-4 sm:p-5" aria-live="polite" aria-relevant="additions text">
         {messages.map((message) => {
         const isUser = message.role === "user";
         const isTyping =

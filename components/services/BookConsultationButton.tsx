@@ -16,7 +16,7 @@ const variantClasses = {
 
 export function BookConsultationButton({
   className = "",
-  children = "Book Free Consultation",
+  children = "Book Your Free AI Strategy Call",
   variant = "primary",
 }: BookConsultationButtonProps) {
   function handleClick() {
@@ -27,6 +27,7 @@ export function BookConsultationButton({
     <button
       type="button"
       onClick={handleClick}
+      aria-haspopup="dialog"
       className={`${variantClasses[variant]} w-full px-6 py-3 text-center font-semibold sm:w-auto ${className}`}
     >
       {children}

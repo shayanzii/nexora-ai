@@ -20,9 +20,15 @@ export function MarketingNavLinks({ activeNav, currentSlug }: MarketingNavLinksP
       </Link>
 
       <div className="group relative">
-        <Link href="/services" className={`${navLinkClass(activeNav === "services")} flex items-center gap-1`}>
+        <Link
+          href="/services"
+          aria-haspopup="true"
+          className={`${navLinkClass(activeNav === "services")} flex items-center gap-1`}
+        >
           Services
-          <span className="text-xs text-nexora-muted">▾</span>
+          <span className="text-xs text-nexora-muted" aria-hidden="true">
+            ▾
+          </span>
         </Link>
         <div className="invisible absolute left-0 top-full z-50 mt-2 w-56 rounded-2xl border border-nexora-border bg-nexora-bg/95 p-2 opacity-0 shadow-[0_0_40px_rgba(0,0,0,0.45)] backdrop-blur-xl transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
           <Link
@@ -61,10 +67,6 @@ export function MarketingNavLinks({ activeNav, currentSlug }: MarketingNavLinksP
         className={`nexora-btn-ghost px-4 py-2 text-sm ${activeNav === "contact" ? "border-nexora-hover" : ""}`}
       >
         Contact
-      </Link>
-
-      <Link href="/admin" className={navLinkClass(activeNav === "admin")}>
-        Admin
       </Link>
     </div>
   );

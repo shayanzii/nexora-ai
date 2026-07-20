@@ -8,7 +8,7 @@ export function ServicesIndexTemplate() {
     <div className="nexora-page-bg nexora-marketing-page min-h-screen text-nexora-muted">
       <ServiceMarketingHeader activeNav="services" currentSlug="index" />
 
-      <main>
+      <main id="main-content">
         <section className="relative overflow-hidden px-6 py-24 lg:px-8 lg:py-32">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,_rgba(185,28,28,0.1),_transparent_55%)]" />
           <div className="mx-auto max-w-7xl">

@@ -3,6 +3,7 @@ type PortfolioHeroPlaceholderProps = {
   accent: string;
   industry: string;
   className?: string;
+  headingLevel?: "h1" | "h2";
 };
 
 export function PortfolioHeroPlaceholder({
@@ -10,7 +11,9 @@ export function PortfolioHeroPlaceholder({
   accent,
   industry,
   className = "",
+  headingLevel = "h2",
 }: PortfolioHeroPlaceholderProps) {
+  const Heading = headingLevel;
   return (
     <div
       className={`relative overflow-hidden rounded-3xl border border-nexora-border bg-nexora-surface ${className}`}
@@ -36,7 +39,7 @@ export function PortfolioHeroPlaceholder({
         </div>
         <div>
           <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-nexora-hover">{accent}</p>
-          <h2 className="mt-2 text-2xl font-semibold text-nexora-text sm:text-3xl lg:text-4xl">{title}</h2>
+          <Heading className="mt-2 text-2xl font-semibold text-nexora-text sm:text-3xl lg:text-4xl">{title}</Heading>
           <p className="mt-3 max-w-md text-sm text-nexora-muted">Project preview · Hero image placeholder</p>
         </div>
         <div className="mt-6 flex gap-2">

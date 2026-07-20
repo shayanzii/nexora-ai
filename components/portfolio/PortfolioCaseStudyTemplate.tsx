@@ -13,7 +13,7 @@ export function PortfolioCaseStudyTemplate({ project }: PortfolioCaseStudyTempla
     <div className="nexora-page-bg nexora-marketing-page min-h-screen text-nexora-muted">
       <ServiceMarketingHeader activeNav="portfolio" />
 
-      <main>
+      <main id="main-content">
         <section className="relative overflow-hidden px-6 py-16 lg:px-8 lg:py-20">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,_rgba(185,28,28,0.08),_transparent_55%)]" />
           <div className="mx-auto max-w-7xl">
@@ -27,6 +27,7 @@ export function PortfolioCaseStudyTemplate({ project }: PortfolioCaseStudyTempla
               title={project.title}
               accent={project.heroAccent}
               industry={project.industry}
+              headingLevel="h1"
               className="nexora-glow shadow-[0_0_80px_rgba(185,28,28,0.12)]"
             />
           </div>

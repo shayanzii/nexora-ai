@@ -1,22 +1,24 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceMarketingFooter, ServiceMarketingHeader } from "@/components/services/ServiceMarketingHeader";
+import { NEXORA_CONTACT_EMAIL, NEXORA_CONTACT_MAILTO, NEXORA_LOCATION } from "@/lib/site/contact";
+import { createPageMetadata } from "@/lib/site/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | Nexora AI",
+export const metadata = createPageMetadata({
+  title: "Privacy Policy",
   description: "How Nexora AI collects, uses, and protects your information.",
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
     <div className="nexora-page-bg nexora-marketing-page min-h-screen text-nexora-muted">
       <ServiceMarketingHeader />
 
-      <main>
-        <section className="px-6 py-24 lg:px-8 lg:py-32">
+      <main id="main-content">
+        <section className="nexora-section px-6 lg:px-8">
           <div className="nexora-card mx-auto max-w-3xl rounded-3xl p-8 lg:p-12">
             <p className="nexora-eyebrow">Legal</p>
-            <h1 className="mt-3 text-3xl font-semibold text-nexora-text sm:text-4xl">Privacy Policy</h1>
+            <h1 className="nexora-heading-section mt-3">Privacy Policy</h1>
             <p className="mt-6 text-sm leading-7 text-nexora-muted">
               Nexora AI respects your privacy. We collect information you submit through contact forms, consultation
               requests, and chat interactions to respond to inquiries and deliver our services. We do not sell personal
@@ -24,11 +26,12 @@ export default function PrivacyPage() {
             </p>
             <p className="mt-4 text-sm leading-7 text-nexora-muted">
               For privacy questions, contact us at{" "}
-              <Link href="mailto:hello@nexora.ai" className="nexora-link">
-                hello@nexora.ai
+              <Link href={NEXORA_CONTACT_MAILTO} className="nexora-link">
+                {NEXORA_CONTACT_EMAIL}
               </Link>
               .
             </p>
+            <p className="mt-4 text-sm leading-7 text-nexora-muted">Nexora AI — {NEXORA_LOCATION}</p>
           </div>
         </section>
       </main>

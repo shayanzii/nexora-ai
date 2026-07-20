@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ServicePageTemplate } from "@/components/services/ServicePageTemplate";
 import { getServiceContent, SERVICE_SLUGS } from "@/lib/services/content";
+import { createPageMetadata } from "@/lib/site/seo";
+import type { Metadata } from "next";
 
 type ServicePageProps = {
   params: Promise<{ slug: string }>;
@@ -19,10 +20,11 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     return { title: "Service Not Found | Nexora AI" };
   }
 
-  return {
-    title: `${content.title} | Nexora AI`,
+  return createPageMetadata({
+    title: content.title,
     description: content.metaDescription,
-  };
+    path: `/services/${slug}`,
+  });
 }
 
 export default async function ServicePage({ params }: ServicePageProps) {

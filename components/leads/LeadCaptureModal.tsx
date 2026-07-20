@@ -1,7 +1,8 @@
 "use client";
 
 import { CalendarCheck, X } from "lucide-react";
-import { FormEvent, useEffect, useId, useState } from "react";
+import { FormEvent, useEffect, useId, useRef, useState } from "react";
+import { EXPECTED_RESPONSE_TIME_LABEL } from "@/lib/contact/response-time";
 import { LeadSubmitError, submitLead } from "@/lib/leads/submit-lead";
 import type { LeadFormData } from "@/lib/leads/types";
 import { hasLeadFormErrors, validateLeadForm } from "@/lib/leads/validation";
@@ -36,11 +37,43 @@ type LeadCaptureModalProps = {
 export function LeadCaptureModal({ isOpen, onClose, onSuccess, fullScreen = false }: LeadCaptureModalProps) {
   const titleId = useId();
   const descriptionId = useId();
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const firstFieldRef = useRef<HTMLInputElement>(null);
   const [form, setForm] = useState<LeadFormData>(EMPTY_FORM);
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof LeadFormData, string>>>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    firstFieldRef.current?.focus();
+
+    function handleTabTrap(event: KeyboardEvent) {
+      if (event.key !== "Tab" || !dialogRef.current) return;
+
+      const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      );
+      const elements = Array.from(focusable).filter((el) => !el.hasAttribute("disabled"));
+      if (elements.length === 0) return;
+
+      const first = elements[0];
+      const last = elements[elements.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener("keydown", handleTabTrap);
+    return () => document.removeEventListener("keydown", handleTabTrap);
+  }, [isOpen, isSubmitted]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -135,6 +168,7 @@ export function LeadCaptureModal({ isOpen, onClose, onSuccess, fullScreen = fals
       onClick={onClose}
     >
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
@@ -147,11 +181,11 @@ export function LeadCaptureModal({ isOpen, onClose, onSuccess, fullScreen = fals
             <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-nexora-hover">
               Nexora AI
             </p>
-            <h3 id={titleId} className="text-base font-semibold text-nexora-text">
-              Get Free Consultation
-            </h3>
+            <h2 id={titleId} className="text-base font-semibold text-nexora-text">
+              Book Your Free AI Strategy Call
+            </h2>
             <p id={descriptionId} className="mt-1 text-xs text-nexora-muted">
-              Tell us about your goals — we&apos;ll respond within 24 hours.
+              {EXPECTED_RESPONSE_TIME_LABEL}
             </p>
           </div>
           <button
@@ -165,7 +199,7 @@ export function LeadCaptureModal({ isOpen, onClose, onSuccess, fullScreen = fals
         </div>
 
         {isSubmitted ? (
-          <div className="flex flex-col items-center px-5 py-10 text-center">
+          <div className="flex flex-col items-center px-5 py-10 text-center" role="status" aria-live="polite">
             <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-nexora-primary/15 text-nexora-hover">
               <CalendarCheck className="h-7 w-7" strokeWidth={2} aria-hidden="true" />
             </div>
@@ -186,6 +220,7 @@ export function LeadCaptureModal({ isOpen, onClose, onSuccess, fullScreen = fals
                 Full Name <span className="text-nexora-hover">*</span>
               </label>
               <input
+                ref={firstFieldRef}
                 id="lead-fullName"
                 type="text"
                 value={form.fullName}
@@ -287,7 +322,10 @@ export function LeadCaptureModal({ isOpen, onClose, onSuccess, fullScreen = fals
 
             <div className="shrink-0 space-y-3 px-4 pb-4 sm:px-5 sm:pb-5">
               {submitError && (
-                <div className="rounded-xl border border-nexora-primary/30 bg-nexora-primary/10 px-3 py-2 text-xs text-nexora-text">
+                <div
+                  role="alert"
+                  className="rounded-xl border border-nexora-primary/30 bg-nexora-primary/10 px-3 py-2 text-xs text-nexora-text"
+                >
                   {submitError}
                 </div>
               )}
@@ -297,7 +335,7 @@ export function LeadCaptureModal({ isOpen, onClose, onSuccess, fullScreen = fals
                 disabled={isSubmitting}
                 className="nexora-btn-primary w-full py-2.5 text-sm disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {isSubmitting ? "Submitting..." : "Submit Request"}
+                {isSubmitting ? "Submitting..." : "Book Your Free AI Strategy Call"}
               </button>
             </div>
           </form>
