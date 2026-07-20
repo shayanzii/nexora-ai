@@ -10,7 +10,7 @@ type ServicePageTemplateProps = {
 export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
   return (
     <div className="nexora-page-bg nexora-marketing-page min-h-screen text-nexora-muted">
-      <ServiceMarketingHeader activeNav="services" currentSlug={content.slug} />
+      <ServiceMarketingHeader activeNav="services" />
 
       <main id="main-content">
         <section className="relative overflow-hidden px-6 py-24 lg:px-8 lg:py-32">
@@ -28,9 +28,9 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
                 {content.hero.description}
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <BookConsultationButton />
+                <BookConsultationButton className="shadow-[0_0_32px_rgba(185,28,28,0.35)]" />
                 <a href="#features" className="nexora-btn-secondary px-6 py-3 text-center font-semibold">
-                  View Features
+                  See What&apos;s Included
                 </a>
               </div>
               <div className="mt-10 flex flex-wrap gap-8 text-sm text-nexora-muted">
@@ -47,7 +47,7 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
               <div className="relative">
                 <p className="nexora-eyebrow text-sm">Why it matters</p>
                 <h2 className="mt-3 text-2xl font-semibold text-nexora-text">
-                  Built for measurable business impact.
+                  Real results for real businesses.
                 </h2>
                 <ul className="mt-6 space-y-4 text-sm text-nexora-muted">
                   {content.benefits.items.slice(0, 3).map((item) => (
@@ -201,11 +201,13 @@ export function ServicePageTemplate({ content }: ServicePageTemplateProps) {
         <section id="consultation" className="px-6 py-24 lg:px-8">
           <div className="nexora-glow nexora-card mx-auto max-w-7xl rounded-[2rem] border-nexora-primary/25 p-8 shadow-[0_0_80px_rgba(185,28,28,0.1)] lg:p-12">
             <div className="mx-auto max-w-2xl text-center">
-              <p className="nexora-eyebrow">Get Started</p>
+              <p className="nexora-eyebrow">Free Consultation</p>
               <h2 className="mt-3 text-3xl font-semibold text-nexora-text sm:text-4xl">{content.cta.title}</h2>
               <p className="mt-5 text-lg leading-8 text-nexora-muted">{content.cta.description}</p>
               <div className="mt-8 flex justify-center">
-                <BookConsultationButton className="px-8 py-3.5" />
+                <BookConsultationButton className="px-8 py-3.5 shadow-[0_0_32px_rgba(185,28,28,0.35)]">
+                  Book a Free Consultation
+                </BookConsultationButton>
               </div>
             </div>
           </div>

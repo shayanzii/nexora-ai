@@ -25,6 +25,8 @@ export const portfolioProjects: Record<PortfolioSlug, PortfolioProject> = {
     summary:
       "A conversational assistant that handles reservations, dietary questions, and catering leads across 8 locations—24/7.",
     heroAccent: "Reservations · Menu · Catering",
+    before: "Staff missed calls during dinner rush. Catering leads went unanswered overnight.",
+    after: "Guests get instant answers 24/7. Catering inquiries are captured and qualified automatically.",
     challenge:
       "The client received hundreds of repetitive website and social messages daily about hours, allergens, and table availability. Staff answered the same questions during peak service, leading to missed calls, slow responses, and lost catering revenue.",
     solution:
@@ -36,12 +38,7 @@ export const portfolioProjects: Record<PortfolioSlug, PortfolioProject> = {
       { value: "<30s", label: "Average first response time" },
       { value: "4.8/5", label: "Guest satisfaction score" },
     ],
-    testimonial: {
-      quote:
-        "Guests get instant answers while our team stays focused on the dining room. Catering inquiries alone paid for the project within six weeks.",
-      name: "Elena Morales",
-      role: "Director of Operations, Ember & Oak Kitchen",
-    },
+    isIllustrative: true,
   },
 
   "dental-clinic-appointment-assistant": {
@@ -53,6 +50,8 @@ export const portfolioProjects: Record<PortfolioSlug, PortfolioProject> = {
     summary:
       "An AI assistant that books cleanings, answers insurance FAQs, and sends smart reminders—reducing no-shows and front-desk load.",
     heroAccent: "Scheduling · Reminders · Patient FAQ",
+    before: "Front desk spent 3+ hours daily on scheduling calls. 18% no-show rate.",
+    after: "Patients book online anytime. Reminders cut no-shows and freed up staff.",
     challenge:
       "Front-desk staff spent 3+ hours daily on scheduling calls and insurance questions. After-hours voicemails piled up, and no-show rates hovered around 18%, costing the practice empty chair time each week.",
     solution:
@@ -64,12 +63,7 @@ export const portfolioProjects: Record<PortfolioSlug, PortfolioProject> = {
       { value: "2.1×", label: "After-hours bookings" },
       { value: "89%", label: "Patient query resolution" },
     ],
-    testimonial: {
-      quote:
-        "Our front desk finally has breathing room. Patients love booking at midnight, and reminders alone recovered dozens of appointments per month.",
-      name: "Dr. James Whitfield",
-      role: "Owner, BrightSmile Dental Group",
-    },
+    isIllustrative: true,
   },
 
   "real-estate-lead-automation": {
@@ -81,6 +75,8 @@ export const portfolioProjects: Record<PortfolioSlug, PortfolioProject> = {
     summary:
       "Instant lead qualification, property matching, and automated follow-up sequences for a 40-agent brokerage.",
     heroAccent: "Lead Qual · Property Match · Follow-up",
+    before: "Leads waited 47 minutes for a response. Hot prospects went cold before agents called back.",
+    after: "Leads are engaged in seconds, qualified, and routed to the right agent with full context.",
     challenge:
       "Online leads from Zillow and the brokerage site waited an average of 47 minutes for a response. Agents manually triaged budget, timeline, and neighborhood preferences, and many hot leads went cold before first contact.",
     solution:
@@ -92,12 +88,7 @@ export const portfolioProjects: Record<PortfolioSlug, PortfolioProject> = {
       { value: "27%", label: "Higher lead-to-client conversion" },
       { value: "12hrs", label: "Agent time saved weekly" },
     ],
-    testimonial: {
-      quote:
-        "Speed wins in real estate. Nexora's system contacts leads before competitors even see the notification—we've never been this organized.",
-      name: "Sarah Chen",
-      role: "Managing Broker, Horizon Realty Partners",
-    },
+    isIllustrative: true,
   },
 
   "hvac-customer-support-ai": {
@@ -109,6 +100,8 @@ export const portfolioProjects: Record<PortfolioSlug, PortfolioProject> = {
     summary:
       "Support AI that triages service requests, routes emergencies, and deflects seasonal FAQ volume during peak summer demand.",
     heroAccent: "Triage · Dispatch · Seasonal Surge",
+    before: "300% call spikes in summer. 20+ minute hold times. Emergency jobs delayed.",
+    after: "AI triages urgency instantly and dispatches the right crew—routine jobs scheduled automatically.",
     challenge:
       "During heat waves, call volume spiked 300% and hold times exceeded 20 minutes. Customers couldn't distinguish emergency vs. routine service, and dispatchers manually logged every ticket—creating delays and frustrated homeowners.",
     solution:
@@ -120,12 +113,7 @@ export const portfolioProjects: Record<PortfolioSlug, PortfolioProject> = {
       { value: "45%", label: "Reduction in hold times" },
       { value: "$18k", label: "Monthly ops savings (est.)" },
     ],
-    testimonial: {
-      quote:
-        "When it's 100 degrees outside, every minute counts. The AI gets the right truck rolling while our team focuses on complex jobs.",
-      name: "Mike Torres",
-      role: "Operations Manager, CoolFlow HVAC",
-    },
+    isIllustrative: true,
   },
 
   "law-firm-ai-receptionist": {
@@ -137,6 +125,8 @@ export const portfolioProjects: Record<PortfolioSlug, PortfolioProject> = {
     summary:
       "A professional AI receptionist that screens intakes, books consultations, and captures after-hours leads with compliance guardrails.",
     heroAccent: "Intake · Screening · After-hours",
+    before: "After-hours calls went to voicemail. Intake was slow and inconsistent.",
+    after: "Every caller gets professional intake 24/7. Consultations booked with complete case summaries.",
     challenge:
       "The firm missed after-hours calls from potential clients and paralegals spent hours on initial intake screening. Inconsistent questioning led to incomplete case files and delayed follow-ups on high-value claims.",
     solution:
@@ -148,12 +138,7 @@ export const portfolioProjects: Record<PortfolioSlug, PortfolioProject> = {
       { value: "55%", label: "Less paralegal intake time" },
       { value: "96%", label: "Intake script compliance" },
     ],
-    testimonial: {
-      quote:
-        "We stopped losing cases to voicemail. Every caller gets a professional experience, and our team receives clean, complete intake summaries.",
-      name: "Amanda Brooks",
-      role: "Managing Partner, Brooks & Vale Injury Law",
-    },
+    isIllustrative: true,
   },
 
   "ecommerce-ai-sales-assistant": {
@@ -165,6 +150,8 @@ export const portfolioProjects: Record<PortfolioSlug, PortfolioProject> = {
     summary:
       "A shopping assistant that recommends products, answers ingredient questions, and recovers abandoned carts with personalized outreach.",
     heroAccent: "Recommend · Recover · Convert",
+    before: "72% cart abandonment. Pre-purchase questions went unanswered.",
+    after: "Shoppers get instant product guidance. Personalized follow-ups recover lost sales.",
     challenge:
       "The brand's support team couldn't keep up with pre-purchase questions about ingredients and routines. Cart abandonment sat at 72%, and generic email flows failed to re-engage shoppers who left with specific skin concerns unanswered.",
     solution:
@@ -176,12 +163,7 @@ export const portfolioProjects: Record<PortfolioSlug, PortfolioProject> = {
       { value: "2.4×", label: "Average order value (assisted)" },
       { value: "64%", label: "Pre-purchase questions resolved" },
     ],
-    testimonial: {
-      quote:
-        "It feels like having a knowledgeable esthetician on every product page. Assisted shoppers spend more and return less product.",
-      name: "Priya Nair",
-      role: "Head of Growth, Lumière Skin Co.",
-    },
+    isIllustrative: true,
   },
 };
 
@@ -198,5 +180,7 @@ export const allPortfolioList = PORTFOLIO_SLUGS.map((slug) => {
     industry: project.industry,
     summary: project.summary,
     heroAccent: project.heroAccent,
+    before: project.before,
+    after: project.after,
   };
 });

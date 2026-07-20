@@ -16,7 +16,7 @@ const variantClasses = {
 
 export function BookConsultationButton({
   className = "",
-  children = "Book Your Free AI Strategy Call",
+  children = "Book Free Consultation",
   variant = "primary",
 }: BookConsultationButtonProps) {
   function handleClick() {

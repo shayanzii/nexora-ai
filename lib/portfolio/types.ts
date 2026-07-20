@@ -3,12 +3,6 @@ export type PortfolioResult = {
   label: string;
 };
 
-export type PortfolioTestimonial = {
-  quote: string;
-  name: string;
-  role: string;
-};
-
 export type PortfolioProject = {
   slug: string;
   title: string;
@@ -16,9 +10,11 @@ export type PortfolioProject = {
   industry: string;
   summary: string;
   heroAccent: string;
+  before: string;
+  after: string;
   challenge: string;
   solution: string;
   technologies: string[];
   results: PortfolioResult[];
-  testimonial: PortfolioTestimonial;
+  isIllustrative?: boolean;
 };

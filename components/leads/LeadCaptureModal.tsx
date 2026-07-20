@@ -182,7 +182,7 @@ export function LeadCaptureModal({ isOpen, onClose, onSuccess, fullScreen = fals
               Nexora AI
             </p>
             <h2 id={titleId} className="text-base font-semibold text-nexora-text">
-              Book Your Free AI Strategy Call
+              Book a Free Consultation
             </h2>
             <p id={descriptionId} className="mt-1 text-xs text-nexora-muted">
               {EXPECTED_RESPONSE_TIME_LABEL}
@@ -335,7 +335,7 @@ export function LeadCaptureModal({ isOpen, onClose, onSuccess, fullScreen = fals
                 disabled={isSubmitting}
                 className="nexora-btn-primary w-full py-2.5 text-sm disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {isSubmitting ? "Submitting..." : "Book Your Free AI Strategy Call"}
+                {isSubmitting ? "Submitting..." : "Book a Free Consultation"}
               </button>
             </div>
           </form>

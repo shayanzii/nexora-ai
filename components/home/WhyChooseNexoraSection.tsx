@@ -1,4 +1,4 @@
-import { Bot, Clock, Headphones, MapPin } from "lucide-react";
+import { Clock, Headphones, MapPin, Shield, Sparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type WhyChooseCard = {
@@ -9,43 +9,46 @@ type WhyChooseCard = {
 
 const whyChooseCards: WhyChooseCard[] = [
   {
-    title: "AI-Powered Automation",
-    description: "Automate repetitive work and free your team to focus on growth.",
-    icon: Bot,
-  },
-  {
-    title: "Fast Delivery",
-    description: "Most projects are delivered in days, not months.",
+    title: "Fast Implementation",
+    description: "Most setups go live in days or weeks—not months. You start seeing results quickly.",
     icon: Clock,
   },
   {
-    title: "Built for Canadian Businesses",
-    description: "Solutions designed for local businesses across Canada.",
+    title: "Custom Solutions",
+    description: "Every business is different. We build AI that fits how you actually work.",
+    icon: Sparkles,
+  },
+  {
+    title: "Canadian-Based Support",
+    description: "Real people in Canada who understand local businesses and respond when you need help.",
     icon: MapPin,
   },
   {
+    title: "Secure & Reliable",
+    description: "Your customer data stays protected. Systems built to run 24/7 without downtime.",
+    icon: Shield,
+  },
+  {
     title: "Ongoing Support",
-    description: "We continue improving your AI after launch.",
+    description: "We don't disappear after launch. We keep improving your AI as your business grows.",
     icon: Headphones,
   },
 ];
 
 export function WhyChooseNexoraSection() {
   return (
-    <section className="px-6 py-20 lg:px-8 lg:py-24">
+    <section className="nexora-section px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
           <p className="nexora-eyebrow">Why Choose Nexora AI</p>
-          <h2 className="mt-3 text-3xl font-semibold text-nexora-text sm:text-4xl">
-            Built for speed, scale, and lasting results.
-          </h2>
+          <h2 className="nexora-heading-section mt-3">A partner you can trust—not just another tech vendor.</h2>
           <p className="mt-5 text-lg leading-8 text-nexora-muted">
-            From first launch to ongoing optimization, we deliver AI that works for your business—not the other way
-            around.
+            We help Canadian businesses save time, get more customers, and stop missing calls—without the jargon or
+            long wait times.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {whyChooseCards.map((card) => {
             const Icon = card.icon;
 

@@ -28,7 +28,7 @@ export function PricingPlanCard({ plan, index, animate }: PricingPlanCardProps) 
 
       <div className="flex items-start justify-between gap-3">
         <h3 className="text-xl font-semibold text-nexora-text">{plan.name}</h3>
-        {plan.id === "enterprise" ? (
+        {plan.id === "business" ? (
           <span className="rounded-full border border-nexora-border bg-nexora-surface px-2 py-0.5 text-[10px] uppercase tracking-wider text-nexora-muted">
             Custom
           </span>
@@ -36,29 +36,14 @@ export function PricingPlanCard({ plan, index, animate }: PricingPlanCardProps) 
       </div>
 
       <div className="mt-4">
-        <p className="text-4xl font-semibold tracking-tight text-nexora-text">{plan.price}</p>
+        <p className="text-sm font-medium uppercase tracking-[0.15em] text-nexora-muted">Starting at</p>
+        <p className="mt-1 text-4xl font-semibold tracking-tight text-nexora-text">{plan.price}</p>
         {plan.priceNote ? (
           <p className="mt-1 text-xs uppercase tracking-[0.2em] text-nexora-muted">{plan.priceNote}</p>
         ) : null}
       </div>
 
-      <p className="mt-4 text-sm leading-7 text-nexora-muted">{plan.description}</p>
-
-      {plan.bestFor ? (
-        <div className="mt-5">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-nexora-hover">Best for</p>
-          <ul className="mt-2 flex flex-wrap gap-2">
-            {plan.bestFor.map((item) => (
-              <li
-                key={item}
-                className="rounded-full border border-nexora-border bg-nexora-surface px-3 py-1 text-xs text-nexora-text"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
+      <p className="mt-5 text-sm leading-7 text-nexora-muted">{plan.description}</p>
 
       <ul className="mt-6 flex-1 space-y-3 border-t border-nexora-border pt-6 text-sm text-nexora-muted">
         {plan.includes.map((feature) => (

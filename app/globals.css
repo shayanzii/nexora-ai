@@ -295,11 +295,15 @@ body {
 
 .nexora-nav-link {
   color: var(--nexora-text-secondary);
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .nexora-nav-link:hover {
   color: var(--nexora-hover);
+}
+
+.nexora-section + .nexora-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .nexora-nav-link:focus-visible {

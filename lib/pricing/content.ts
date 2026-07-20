@@ -1,6 +1,6 @@
 import { NEXORA_CONTACT_EMAIL, NEXORA_SALES_MAILTO } from "@/lib/site/contact";
 
-export type PricingPlanId = "starter" | "growth" | "pro" | "enterprise";
+export type PricingPlanId = "starter" | "growth" | "business";
 
 export type PricingPlan = {
   id: PricingPlanId;
@@ -8,7 +8,6 @@ export type PricingPlan = {
   price: string;
   priceNote?: string;
   description: string;
-  bestFor?: string[];
   includes: string[];
   featured?: boolean;
   cta: "consultation" | "sales";
@@ -29,117 +28,99 @@ export type PricingFaqItem = {
 export const pricingPlans: PricingPlan[] = [
   {
     id: "starter",
-    name: "Starter",
-    price: "CA$199",
-    priceNote: "one-time setup",
-    description: "Launch AI chat and capture leads fast—ideal for local businesses getting started.",
-    bestFor: ["Restaurants", "Barbershops", "Small local businesses"],
+    name: "Starter AI",
+    price: "CA$499",
+    priceNote: "starting price",
+    description: "Perfect for small businesses looking to automate customer communication.",
     includes: [
-      "AI Chat Widget",
-      "Lead Form",
-      "Contact Form",
-      "Basic Setup",
-      "14 days support",
+      "AI Website Chatbot",
+      "Instant FAQ Responses",
+      "Lead Capture",
+      "Email Notifications",
+      "Website Integration",
+      "Basic Setup & Training",
     ],
     cta: "consultation",
-    ctaLabel: "Book Your Free AI Strategy Call",
+    ctaLabel: "Start Your AI Journey",
   },
   {
     id: "growth",
-    name: "Growth",
-    price: "CA$399",
-    priceNote: "one-time setup",
-    description: "Everything you need to convert, book, and nurture customers automatically.",
+    name: "Growth AI",
+    price: "CA$999",
+    priceNote: "starting price",
+    description: "For businesses that want to automate customer support and book more appointments.",
     featured: true,
     includes: [
       "Everything in Starter",
-      "CRM Integration",
+      "AI Receptionist",
       "Appointment Booking",
-      "Email Automation",
-      "Analytics",
-      "30 days support",
+      "CRM Integration",
+      "WhatsApp or Facebook Messenger",
+      "Custom Business Knowledge",
+      "Priority Support",
     ],
     cta: "consultation",
-    ctaLabel: "Book Your Free AI Strategy Call",
+    ctaLabel: "Book Free Consultation",
   },
   {
-    id: "pro",
-    name: "Pro",
-    price: "CA$699",
-    priceNote: "one-time setup",
-    description: "Voice AI and advanced automations for teams ready to scale operations.",
+    id: "business",
+    name: "Business AI",
+    price: "CA$2,499",
+    priceNote: "starting price",
+    description: "Complete AI automation tailored for growing businesses.",
     includes: [
       "Everything in Growth",
-      "AI Voice Agent",
-      "Advanced Automations",
-      "Priority Support",
-      "Custom Integrations",
-    ],
-    cta: "consultation",
-    ctaLabel: "Book Your Free AI Strategy Call",
-  },
-  {
-    id: "enterprise",
-    name: "Enterprise",
-    price: "Custom",
-    priceNote: "tailored scope",
-    description: "Multi-location rollouts, compliance, and dedicated strategy for complex organizations.",
-    includes: [
-      "Everything in Pro",
-      "Dedicated solution architect",
-      "Multi-brand deployments",
-      "SLA & security review",
-      "Custom model tuning",
-      "24/7 priority support",
+      "Custom AI Workflows",
+      "Internal AI Assistant",
+      "CRM Automation",
+      "Email Automation",
+      "Dashboard",
+      "Advanced Integrations",
+      "Premium Support",
     ],
     cta: "sales",
-    ctaLabel: "Contact Sales",
+    ctaLabel: "Request Custom Quote",
   },
 ];
 
 export const monthlySupportTiers: MonthlySupportTier[] = [
   {
-    plan: "Starter Care",
+    plan: "Starter AI Care",
     price: "CA$99/mo",
-    includes: ["Widget updates", "Monthly health check", "Email support", "Up to 2 content refreshes"],
+    includes: ["Chatbot updates", "Monthly health check", "Email support", "Up to 2 content refreshes"],
   },
   {
-    plan: "Growth Care",
+    plan: "Growth AI Care",
     price: "CA$199/mo",
-    includes: ["CRM sync monitoring", "Automation tuning", "Priority email support", "Quarterly optimization"],
+    includes: ["Receptionist tuning", "CRM sync monitoring", "Priority email support", "Quarterly optimization"],
   },
   {
-    plan: "Pro Care",
+    plan: "Business AI Care",
     price: "CA$349/mo",
-    includes: ["Voice agent tuning", "Advanced workflow updates", "Priority chat & email", "Monthly strategy call"],
-  },
-  {
-    plan: "Enterprise",
-    price: "Custom",
-    includes: ["Dedicated CSM", "Custom SLA", "Proactive monitoring", "Executive reporting"],
+    includes: ["Workflow updates", "Advanced automation tuning", "Priority chat & email", "Monthly strategy call"],
   },
 ];
 
 export const pricingFaq: PricingFaqItem[] = [
   {
-    question: "What's included in the one-time setup fee?",
+    question: "What's included in the setup fee?",
     answer:
-      "Setup covers discovery, configuration, branding, knowledge base import, integrations within your plan, testing, and launch support for the included support window (14 or 30 days depending on plan).",
+      "Setup covers discovery, configuration, training on your business, integrations within your plan, testing, and launch support. We handle everything—you don't need technical knowledge.",
   },
   {
     question: "Do I need monthly support after launch?",
     answer:
-      "It's optional but recommended. Monthly care plans keep your AI accurate, integrations healthy, and automations optimized as your business evolves.",
+      "It's optional but recommended. Care plans keep your AI accurate, integrations healthy, and automations optimized as your business grows.",
   },
   {
-    question: "Can I upgrade from Starter to Growth or Pro later?",
+    question: "Can I upgrade from Starter AI to Growth or Business later?",
     answer:
       "Yes. We apply a credit for your original setup toward the upgrade so you only pay the difference plus any new integration work.",
   },
   {
-    question: "Are there hidden fees or usage charges?",
+    question: "Are there hidden fees?",
     answer:
-      "Plan pricing is transparent. Third-party costs (e.g., Twilio, OpenAI API usage at scale) are billed separately at pass-through rates—we'll estimate these during your consultation.",
+      "No. Plan pricing is transparent. Third-party costs (phone lines, messaging platforms at high volume) are billed at pass-through rates—we'll estimate these during your consultation.",
   },
   {
     question: "How does the money-back guarantee work?",
@@ -148,8 +129,7 @@ export const pricingFaq: PricingFaqItem[] = [
   },
   {
     question: "What payment methods do you accept?",
-    answer:
-      "We accept major credit cards, bank transfer, and invoicing for Enterprise clients with approved terms.",
+    answer: "We accept major credit cards, bank transfer, and invoicing for Business AI clients with approved terms.",
   },
 ];
 
@@ -158,10 +138,10 @@ export const moneyBackGuarantee = {
   description:
     "We're confident in our process. If Nexora AI fails to deliver the agreed project scope within 30 days of your kickoff date, we'll refund your setup fee—no hassle, no hard feelings.",
   points: [
-    "Applies to Starter, Growth, and Pro setup fees",
+    "Applies to Starter AI, Growth AI, and Business AI setup fees",
     "Kickoff begins after signed scope and initial payment",
     "Refund processed within 10 business days if criteria are met",
-    "Enterprise engagements use custom SLA terms",
+    "Custom scopes use agreed SLA terms",
   ],
 };
 

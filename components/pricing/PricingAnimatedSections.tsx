@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { PricingPlan } from "@/lib/pricing/content";
 import { SALES_MAILTO } from "@/lib/pricing/content";
@@ -9,9 +8,10 @@ import { PricingPlanCard } from "./PricingPlanCard";
 
 type PricingCardsGridProps = {
   plans: PricingPlan[];
+  columns?: 3 | 4;
 };
 
-export function PricingCardsGrid({ plans }: PricingCardsGridProps) {
+export function PricingCardsGrid({ plans, columns = 3 }: PricingCardsGridProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -36,7 +36,7 @@ export function PricingCardsGrid({ plans }: PricingCardsGridProps) {
   return (
     <div
       ref={ref}
-      className={`grid gap-6 lg:grid-cols-2 xl:grid-cols-4 ${visible ? "pricing-grid-visible" : ""}`}
+      className={`grid gap-6 lg:grid-cols-2 ${columns === 3 ? "xl:grid-cols-3" : "xl:grid-cols-4"} ${visible ? "pricing-grid-visible" : ""}`}
     >
       {plans.map((plan, index) => (
         <PricingPlanCard key={plan.id} plan={plan} index={index} animate={visible} />
@@ -74,7 +74,7 @@ export function PricingSupportGrid({
   return (
     <div
       ref={ref}
-      className={`grid gap-6 sm:grid-cols-2 lg:grid-cols-4 ${visible ? "pricing-grid-visible" : ""}`}
+      className={`grid gap-6 sm:grid-cols-2 lg:grid-cols-3 ${visible ? "pricing-grid-visible" : ""}`}
     >
       {tiers.map((tier, index) => (
         <article
@@ -102,11 +102,16 @@ export function PricingSupportGrid({
 
 export function PricingHeroActions() {
   return (
-    <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-      <BookConsultationButton className="pricing-hero-cta px-6 py-3" />
-      <Link href="/pricing" className="nexora-btn-secondary px-6 py-3 text-center font-semibold">
-        Compare Plans
-      </Link>
+    <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+      <BookConsultationButton className="pricing-hero-cta px-7 py-3.5 shadow-[0_0_32px_rgba(185,28,28,0.35)]">
+        Book Consultation
+      </BookConsultationButton>
+      <a
+        href="#plans"
+        className="nexora-btn-secondary px-7 py-3.5 text-center font-semibold"
+      >
+        View Packages
+      </a>
     </div>
   );
 }
@@ -114,9 +119,11 @@ export function PricingHeroActions() {
 export function PricingFinalCta() {
   return (
     <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-      <BookConsultationButton className="px-8 py-3.5" />
+      <BookConsultationButton className="px-8 py-3.5 shadow-[0_0_32px_rgba(185,28,28,0.35)]">
+        Book Consultation
+      </BookConsultationButton>
       <a href={SALES_MAILTO} className="nexora-btn-secondary px-8 py-3.5 font-semibold">
-        Contact Sales
+        Get Proposal
       </a>
     </div>
   );

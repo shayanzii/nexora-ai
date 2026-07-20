@@ -19,13 +19,15 @@ export function PortfolioIndexTemplate() {
                 Portfolio
               </div>
               <h1 className="text-4xl font-semibold leading-tight text-nexora-text sm:text-5xl lg:text-6xl">
-                AI projects that deliver real business outcomes.
+                Real businesses. Real results.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-nexora-muted sm:text-xl">
-                Explore how Nexora AI helps companies across industries automate support, capture leads, and scale operations with intelligent systems.
+                See how local companies use AI to answer customers faster, book more jobs, and save hours every week.
               </p>
               <div className="mt-8">
-                <BookConsultationButton />
+                <BookConsultationButton className="shadow-[0_0_32px_rgba(185,28,28,0.35)]">
+                  Book a Free Consultation
+                </BookConsultationButton>
               </div>
             </div>
           </div>
@@ -54,6 +56,16 @@ export function PortfolioIndexTemplate() {
                     className="rounded-none border-0 border-b border-nexora-border"
                   />
                   <div className="p-6 lg:p-8">
+                    <div className="mb-4 grid gap-3 sm:grid-cols-2">
+                      <div className="rounded-xl border border-nexora-border bg-nexora-surface/50 px-3 py-2.5">
+                        <p className="text-[10px] font-semibold uppercase tracking-wider text-nexora-muted">Before</p>
+                        <p className="mt-1 text-xs leading-5 text-nexora-text line-clamp-2">{project.before}</p>
+                      </div>
+                      <div className="rounded-xl border border-nexora-primary/25 bg-nexora-primary/5 px-3 py-2.5">
+                        <p className="text-[10px] font-semibold uppercase tracking-wider text-nexora-hover">After</p>
+                        <p className="mt-1 text-xs leading-5 text-nexora-text line-clamp-2">{project.after}</p>
+                      </div>
+                    </div>
                     <p className="text-sm leading-7 text-nexora-muted">{project.summary}</p>
                     <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-nexora-hover transition group-hover:gap-3">
                       Read case study
@@ -69,15 +81,17 @@ export function PortfolioIndexTemplate() {
         <section className="px-6 pb-24 lg:px-8 lg:pb-32">
           <div className="nexora-glow nexora-card mx-auto max-w-7xl rounded-[2rem] border-nexora-primary/25 p-8 shadow-[0_0_80px_rgba(185,28,28,0.1)] lg:p-12">
             <div className="mx-auto max-w-2xl text-center">
-              <p className="nexora-eyebrow">Get Started</p>
+              <p className="nexora-eyebrow">Free Consultation</p>
               <h2 className="mt-3 text-3xl font-semibold text-nexora-text sm:text-4xl">
-                Let&apos;s build your next success story.
+                Ready to get the same results for your business?
               </h2>
               <p className="mt-5 text-lg leading-8 text-nexora-muted">
-                Book a free consultation and we&apos;ll outline a custom AI roadmap for your business.
+                Book a free call and we&apos;ll show you what AI could do for your industry—no obligation.
               </p>
               <div className="mt-8 flex justify-center">
-                <BookConsultationButton className="px-8 py-3.5" />
+                <BookConsultationButton className="px-8 py-3.5 shadow-[0_0_32px_rgba(185,28,28,0.35)]">
+                  Book a Free Consultation
+                </BookConsultationButton>
               </div>
             </div>
           </div>

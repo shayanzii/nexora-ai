@@ -15,11 +15,11 @@ export function AboutNexoraSection() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="nexora-eyebrow">About Nexora AI</p>
           <h2 className="mt-3 text-3xl font-semibold text-nexora-text sm:text-4xl">
-            AI that works for real businesses.
+            We help Canadian businesses grow—with AI that&apos;s easy to understand.
           </h2>
           <p className="mt-5 text-lg leading-8 text-nexora-muted">
-            We help Canadian teams adopt AI with clarity—focused builds, transparent delivery, and tools that earn their
-            place in your workflow.
+            We&apos;re not a faceless tech vendor. We&apos;re a Canadian team that listens, ships fast, and stays
+            with you after launch.
           </p>
         </div>
 

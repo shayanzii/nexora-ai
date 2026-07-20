@@ -7,16 +7,16 @@ export const aboutPillars: AboutPillar[] = [
   {
     title: "Mission",
     description:
-      "Make practical AI accessible to Canadian businesses—automation that saves time, captures leads, and improves customer experience without unnecessary complexity.",
+      "Help Canadian business owners stop missing customers and wasting time—by making practical AI simple to use and easy to understand.",
   },
   {
     title: "Vision",
     description:
-      "A future where every local business can use intelligent tools once reserved for large enterprises—deployed fast, maintained well, and measured clearly.",
+      "Every local business deserves 24/7 customer support and smart automation—without enterprise budgets or technical teams.",
   },
   {
     title: "Our Approach",
     description:
-      "We start with your goals, scope what matters, ship quickly, and improve after launch. Clear pricing, honest timelines, and support that continues beyond go-live.",
+      "We listen first, quote honestly, launch fast, and stay after go-live. You'll always know what you're getting, what it costs, and when it ships.",
   },
 ];
