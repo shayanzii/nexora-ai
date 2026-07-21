@@ -1,0 +1,225 @@
+export type {
+  Agent,
+  AgentCapability,
+  AgentContext,
+  AgentResult,
+  AgentTask,
+  AssignedAgent,
+  ComplexityLevel,
+  ExecutionMode,
+  ExecutionResult,
+  ExecutionStatus,
+  NextAction,
+  NextActionType,
+  ProjectContext,
+  ProjectPlan,
+  ProjectRequest,
+  QueuedTask,
+  ClarificationQuestion,
+  ClientDiscoveryMetadata,
+  ClientDiscoveryProfile,
+  DiscoveryOutput,
+  FollowUpOutput,
+  LeadQualificationOutput,
+  MissingFieldReport,
+  PriceRange,
+  PricingOutput,
+  ProjectRisk,
+  BusinessAnalysisOutput,
+  ProposalEngineOutput,
+  RecommendedService,
+  SalesAgentOutput,
+  SalesDepartmentResult,
+  SalesDepartmentStepResult,
+  SalesQualificationPackage,
+  SalesQualificationStatus,
+  SalesRequiredField,
+  TimelineEstimate,
+} from "./types";
+
+export { createProjectContext, requestFromPlan } from "./types";
+export { SALES_AGENT_ID, SALES_DEPARTMENT_ID, SALES_TASK_TYPE } from "./types";
+
+export {
+  BaseAgent,
+  CEOAgent,
+  SalesDepartment,
+  SalesAgent,
+  LeadQualificationAgent,
+  DiscoveryAgent,
+  ProposalAgent,
+  BusinessAnalysisAgent,
+  ProposalEngineAgent,
+  PricingAgent,
+  FollowUpAgent,
+  createDefaultSpecialistAgents,
+  createDefaultSalesDepartmentAgents,
+} from "./agents";
+
+export {
+  SALES_EXAMPLE_COMPLETE_REQUEST,
+  SALES_EXAMPLE_INCOMPLETE_REQUEST,
+  SALES_EXAMPLE_MINIMAL_REQUEST,
+  SALES_EXAMPLE_REGULATED_REQUEST,
+  SALES_EXAMPLE_REQUESTS,
+  SALES_EXAMPLE_UNDER_BUDGET_REQUEST,
+} from "./agents";
+export type { SalesExampleRequestKey } from "./agents";
+
+export {
+  buildQualificationPackage,
+  calculateCompletenessScore,
+  detectMissingFields,
+  generateClarificationQuestions,
+  parseClientDiscoveryProfile,
+  SALES_REQUIRED_FIELDS,
+} from "./agents/sales/qualification";
+
+export { AgentRegistry } from "./registry";
+export {
+  WorkflowEngine,
+  RuntimeEngine,
+  TaskQueue,
+  buildExecutionBatches,
+  mergeAgentOutputs,
+  estimateComplexity,
+} from "./core";
+export type { RuntimeEngineOptions, TaskQueueOptions, ComplexityEstimate } from "./core";
+export { validateProjectRequest, validateBrainRequest } from "./schemas";
+export type { BrainRequestPayload } from "./schemas";
+export {
+  ProposalEngine,
+  generateProposal,
+  PROPOSAL_EXAMPLE_DENTIST_REQUEST,
+  PROPOSAL_EXAMPLE_ENGINE_INPUT,
+  PROPOSAL_EXAMPLE_HVAC_REQUEST,
+  PROPOSAL_EXAMPLE_LAW_FIRM_REQUEST,
+  PROPOSAL_EXAMPLE_PLUMBING_REQUEST,
+  PROPOSAL_EXAMPLE_REQUESTS,
+  PROPOSAL_EXAMPLE_RESTAURANT_REQUEST,
+} from "./departments/sales/proposal";
+export type {
+  Proposal,
+  ProposalDeliverable,
+  ProposalEngineInput,
+  ProposalEngineResult,
+  ProposalExampleKey,
+  ProposalMilestone,
+} from "./departments/sales/proposal";
+
+export {
+  createBrainRegistry,
+  executeProjectPlan,
+  generateProposalForRequest,
+  runSalesDepartment,
+  getBrainRegistry,
+  getRuntimeEngine,
+  getWorkflowEngine,
+  processBrainRequest,
+  processProjectRequest,
+  processProjectRequestPayload,
+  resetBrainService,
+} from "./services";
+export type { BrainServiceResult } from "./services";
+export { planStore, executionStore, SharedMemory } from "./memory";
+export { DEFAULT_WORKFLOW, validateWorkflowCoverage } from "./workflows";
+export { getAllTools, getTool, TOOL_CATALOG } from "./tools";
+export type { BrainTool } from "./tools";
+
+export {
+  KnowledgeRegistry,
+  getKnowledgeRegistry,
+  resetKnowledgeRegistry,
+} from "./knowledge";
+export type {
+  IndustryProfile,
+  ServiceDefinition,
+  Playbook,
+  ProposalTemplateBlock,
+  ServicePricing,
+  PricingPolicy,
+  KnowledgePrompt,
+} from "./knowledge";
+
+export {
+  StrategicReasoner,
+  BusinessAnalysisEngine,
+  OpportunityEngine,
+  RecommendationEngine,
+  SolutionDesigner,
+} from "./reasoning";
+export type {
+  StrategicReasoningResult,
+  StrategicReasonerInput,
+  StrategicReasonerOutput,
+  BusinessAnalysisResult,
+  OpportunityAnalysis,
+  RecommendationResult,
+  BusinessSolution,
+  BusinessStrategy,
+  PriorityRoadmapPhase,
+  ExpectedBusinessImpact,
+  Recommendation,
+  OpportunityItem,
+  SolutionComponent,
+  ReasoningContext,
+} from "./reasoning";
+
+export {
+  WebsiteDepartment,
+  registerWebsiteDepartment,
+  getWebsiteDepartment,
+  InputBuilder,
+  OutputAssembler,
+  createPlaceholderPlannerOutputs,
+  WEBSITE_DEPARTMENT_ID,
+  WEBSITE_TASK_TYPE,
+  WEBSITE_PLAN_SCHEMA_VERSION,
+} from "./departments/website";
+
+export type {
+  WebsitePlan,
+  WebsiteDepartmentRequest,
+  WebsiteDepartmentResult,
+  WebsiteDepartmentInputParams,
+  WebsiteDepartmentOptions,
+  BuilderFeedback,
+  BrandIdentity,
+  UserJourney,
+  ArchitectureDecision,
+  SiteModel,
+  ConfidenceLevel,
+} from "./departments/website";
+
+export {
+  BaseDepartment,
+  DepartmentRegistry,
+  TelemetryCollector,
+  buildDepartmentContext,
+  getDepartmentRegistry,
+  getLifecycleSteps,
+  resetDepartmentRegistry,
+  runDepartmentLifecycle,
+  validateRequest,
+  mergeValidationReports,
+  emptyValidationReport,
+  resolveRequestId,
+} from "./sdk";
+
+export type {
+  Department,
+  DepartmentContext,
+  DepartmentRunResult,
+  DepartmentSummary,
+  DepartmentTelemetry,
+  DepartmentRegistration,
+  DepartmentExecutionOptions,
+  ValidationReport,
+  ValidationIssue,
+  ValidationRule,
+  DepartmentError,
+  ValidationError,
+  PlannerError,
+  ExecutionError,
+  KnowledgeError,
+} from "./sdk";
