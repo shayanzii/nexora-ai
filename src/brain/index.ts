@@ -43,6 +43,7 @@ export { SALES_AGENT_ID, SALES_DEPARTMENT_ID, SALES_TASK_TYPE } from "./types";
 export {
   BaseAgent,
   CEOAgent,
+  CEOIntelligenceAgent,
   SalesDepartment,
   SalesAgent,
   LeadQualificationAgent,
@@ -65,6 +66,13 @@ export {
   SALES_EXAMPLE_UNDER_BUDGET_REQUEST,
 } from "./agents";
 export type { SalesExampleRequestKey } from "./agents";
+
+export type {
+  CEOBusinessAnalysis,
+  CEOCustomerRequest,
+  CEOBudgetEstimate,
+  CEOTimelineEstimate,
+} from "./agents/ceo";
 
 export {
   buildQualificationPackage,
@@ -148,6 +156,21 @@ export {
   RecommendationEngine,
   SolutionDesigner,
 } from "./reasoning";
+
+export {
+  PromptEngine,
+  getPromptEngine,
+  resetPromptEngine,
+  renderPrompt,
+  getPromptRegistry,
+  resetPromptRegistry,
+} from "./prompts";
+
+export type {
+  PromptTemplate,
+  RenderedPrompt,
+  PromptVariables,
+} from "./prompts";
 export type {
   StrategicReasoningResult,
   StrategicReasonerInput,
@@ -223,3 +246,57 @@ export type {
   ExecutionError,
   KnowledgeError,
 } from "./sdk";
+
+export {
+  ProviderRegistry,
+  getProviderRegistry,
+  resetProviderRegistry,
+  resolveGenerationOptions,
+  resolveProviderTimeoutMs,
+  resolveProviderMaxRetries,
+  KNOWN_LLM_PROVIDERS,
+  LLMError,
+  LLMProviderNotFoundError,
+  LLMModelNotSupportedError,
+  LLMCapabilityNotSupportedError,
+  OpenAIProvider,
+  createOpenAIProvider,
+  registerOpenAIProvider,
+  OPENAI_DEFAULT_MODEL,
+  OPENAI_MODELS,
+  mapLLMRequestToOpenAI,
+  mapOpenAIResponseToLLM,
+  mapOpenAIError,
+  LLMGateway,
+  getLLMGateway,
+  resetLLMGateway,
+} from "./llm";
+
+export type {
+  LLMProvider,
+  LLMProviderRegistration,
+  LLMRequest,
+  LLMResponse,
+  LLMStreamChunk,
+  LLMHealthCheckResult,
+  LLMMessage,
+  GenerationOptions,
+  TokenUsage,
+  ModelCapability,
+  ModelDefinition,
+  LLMProviderId,
+  KnownLLMProviderId,
+  ModelId,
+  LLMConfig,
+  ProviderConfig,
+  LLMErrorCode,
+  LLMErrorDetails,
+  ProviderRegistryOptions,
+  OpenAIProviderOptions,
+  OpenAIClientLike,
+  OpenAIModelId,
+  GatewayConfig,
+  GatewayLogEvent,
+  LLMGatewayOptions,
+  RoutingStrategy,
+} from "./llm";

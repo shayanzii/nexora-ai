@@ -1,5 +1,6 @@
 export { BaseAgent } from "./base-agent";
 export { CEOAgent } from "./ceo-agent";
+export { CEOAgent as CEOIntelligenceAgent } from "./ceo";
 export { SalesDepartment, SalesAgent } from "./sales/department";
 export {
   LeadQualificationAgent,
