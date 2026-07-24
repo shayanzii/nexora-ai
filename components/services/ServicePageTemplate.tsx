@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { ServicePageContent } from "@/lib/services/types";
 import { BookConsultationButton } from "./BookConsultationButton";
 import { ServiceMarketingFooter, ServiceMarketingHeader } from "./ServiceMarketingHeader";

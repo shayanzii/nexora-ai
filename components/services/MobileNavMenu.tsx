@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { useIsClient } from "@/lib/react/use-is-client";
 import type { MarketingActiveNav } from "./MarketingNavLinks";
 
 const navItems: { href: string; label: string; key: MarketingActiveNav }[] = [
@@ -20,24 +21,22 @@ type MobileNavMenuProps = {
 
 export function MobileNavMenu({ activeNav }: MobileNavMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const isMounted = useIsClient();
 
   const close = useCallback(() => setIsOpen(false), []);
 
-  useEffect(() => {
-    setIsMounted(true);
+  const openMenu = useCallback(() => {
+    setIsVisible(true);
+    setIsOpen(true);
   }, []);
 
   useEffect(() => {
-    if (isOpen) {
-      setIsVisible(true);
-      return;
-    }
+    if (isOpen || !isVisible) return;
 
     const timer = window.setTimeout(() => setIsVisible(false), 320);
     return () => window.clearTimeout(timer);
-  }, [isOpen]);
+  }, [isOpen, isVisible]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -124,7 +123,7 @@ export function MobileNavMenu({ activeNav }: MobileNavMenuProps) {
     <div className="md:hidden">
       <button
         type="button"
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={() => (isOpen ? close() : openMenu())}
         aria-expanded={isOpen}
         aria-controls="mobile-nav-panel"
         aria-label={isOpen ? "Close menu" : "Open menu"}
