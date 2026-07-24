@@ -69,6 +69,7 @@ export interface WebsitePlannerOutputs {
   ctaStrategy: CTAStrategy;
   leadGenerationStrategy: LeadGenerationStrategy;
   seoPlan: SEOPlan;
+  websiteBlueprint?: import("./types/WebsiteBlueprint").WebsiteBlueprint;
 }
 
 /** Metadata captured during output assembly. */

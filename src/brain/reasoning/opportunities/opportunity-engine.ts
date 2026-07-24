@@ -33,10 +33,7 @@ export class OpportunityEngine {
         industryProfile?.socialMediaRecommendations ?? [],
         input,
       );
-      const operational = buildOperationalOpportunities(
-        primaryPlaybook?.steps ?? [],
-        input,
-      );
+      const operational = buildOperationalOpportunities(primaryPlaybook?.steps ?? []);
       const revenue = buildRevenueOpportunities(
         industryProfile?.kpis ?? [],
         input,
@@ -153,10 +150,7 @@ function buildMarketingOpportunities(
   return [...website, ...social];
 }
 
-function buildOperationalOpportunities(
-  playbookSteps: string[],
-  input: OpportunityInput,
-): OpportunityItem[] {
+function buildOperationalOpportunities(playbookSteps: string[]): OpportunityItem[] {
   return playbookSteps.map((step, index) => ({
     id: `opp-ops-${index + 1}`,
     category: "operational",

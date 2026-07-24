@@ -31,8 +31,13 @@ export function FloatingChatWidget() {
     setIsOpen(false);
   }, []);
   const toggle = useCallback(() => {
-    setIsOpen((prev) => !prev);
-  }, []);
+    if (isOpen) {
+      setIsOpen(false);
+      return;
+    }
+    setIsVisible(true);
+    setIsOpen(true);
+  }, [isOpen]);
   const openLeadModal = useCallback(() => setIsLeadModalOpen(true), []);
   const closeLeadModal = useCallback(() => setIsLeadModalOpen(false), []);
   const handleLeadSuccess = useCallback(() => {
@@ -40,14 +45,11 @@ export function FloatingChatWidget() {
   }, [appendAssistantMessage]);
 
   useEffect(() => {
-    if (isOpen) {
-      setIsVisible(true);
-      return;
-    }
+    if (isOpen || !isVisible) return;
 
     const timer = window.setTimeout(() => setIsVisible(false), 300);
     return () => window.clearTimeout(timer);
-  }, [isOpen]);
+  }, [isOpen, isVisible]);
 
   useEffect(() => {
     if (!isOpen) return;

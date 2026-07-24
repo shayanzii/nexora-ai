@@ -2,6 +2,9 @@ import type { StrategicReasoningResult } from "../../reasoning/types";
 import type { SalesDepartmentResult } from "../../types/sales";
 import type { ProjectRequest } from "../../types/project";
 import type { Proposal } from "../sales/proposal/schema";
+import type { WebsiteBlueprint } from "./types/WebsiteBlueprint";
+
+export type { WebsiteBlueprint };
 
 /** Canonical schema version for WebsitePlan documents. */
 export const WEBSITE_PLAN_SCHEMA_VERSION = "1.1.0" as const;
@@ -619,6 +622,7 @@ export interface WebsitePlan {
   confidenceLevel: ConfidenceLevel;
   summary: string;
   nextSteps: string[];
+  websiteBlueprint?: WebsiteBlueprint;
 }
 
 export interface WebsiteDepartmentOptions {

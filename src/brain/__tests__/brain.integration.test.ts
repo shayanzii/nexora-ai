@@ -15,7 +15,6 @@ import {
 } from "../index";
 import { SharedMemory } from "../memory/shared-memory";
 import type { ProjectRequest } from "../types/project";
-import { SALES_TASK_TYPE } from "../types/sales";
 
 const EXPECTED_SALES_STEPS = [
   "lead-qualification-agent",
@@ -140,11 +139,16 @@ describe("Nexora Brain integration", () => {
           salesResult.stepsExecuted.slice(0, EXPECTED_SALES_STEPS.length),
           EXPECTED_SALES_STEPS,
         );
-        assert.ok(salesResult.pricing?.estimatedPriceRange.minimum! > 0);
-        assert.ok(salesResult.pricing!.estimatedPriceRange.maximum >= salesResult.pricing!.estimatedPriceRange.minimum);
-        assert.equal(typeof salesResult.pricing?.budgetAligned, "boolean");
-        assert.ok(salesResult.proposalDocument?.deliverables.length! > 0);
-        assert.equal(salesResult.proposalDocument?.requestId, plan.requestId);
+        assert.ok(salesResult.pricing);
+        assert.ok(salesResult.pricing.estimatedPriceRange.minimum > 0);
+        assert.ok(
+          salesResult.pricing.estimatedPriceRange.maximum >=
+            salesResult.pricing.estimatedPriceRange.minimum,
+        );
+        assert.equal(typeof salesResult.pricing.budgetAligned, "boolean");
+        assert.ok(salesResult.proposalDocument);
+        assert.ok(salesResult.proposalDocument.deliverables.length > 0);
+        assert.equal(salesResult.proposalDocument.requestId, plan.requestId);
       });
 
       it("passes workflow coverage validation", () => {

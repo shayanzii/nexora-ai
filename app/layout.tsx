@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ChatWidgetLoader } from "@/components/chat/ChatWidgetLoader";
 import { SkipToMain } from "@/components/layout/SkipToMain";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { createPageMetadata, getSiteUrl, organizationJsonLd, DEFAULT_DESCRIPTION, SITE_NAME } from "@/lib/site/seo";
+import { getSiteUrl, organizationJsonLd, DEFAULT_DESCRIPTION, SITE_NAME } from "@/lib/site/seo";
 import "./globals.css";
 
 const geistSans = Geist({

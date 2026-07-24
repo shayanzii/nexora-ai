@@ -9,8 +9,8 @@
     "lint": "eslint",
     "test:brain": "npx tsx --test src/brain/__tests__/brain.integration.test.ts",
     "test:brain:sdk": "npx tsx --test src/brain/sdk/__tests__/sdk.integration.test.ts",
-    "test:brain:website": "npx tsx --test src/brain/departments/website/__tests__/website-department.test.ts",
-    "test:brain:all": "npx tsx --test src/brain/__tests__/brain.integration.test.ts src/brain/sdk/__tests__/sdk.integration.test.ts src/brain/departments/website/__tests__/website-department.test.ts"
+    "test:brain:website": "npx tsx --test src/brain/departments/website/__tests__/website-department.test.ts src/brain/departments/website/tests/BrandAnalyzer.test.ts src/brain/departments/website/tests/UserJourneyPlanner.test.ts src/brain/departments/website/tests/InformationArchitecturePlanner.test.ts src/brain/departments/website/tests/SEOPlanner.test.ts src/brain/departments/website/tests/ContentPlanner.test.ts src/brain/departments/website/tests/WebsiteGenerator.test.ts",
+    "test:brain:all": "npx tsx --test src/brain/__tests__/brain.integration.test.ts src/brain/sdk/__tests__/sdk.integration.test.ts src/brain/departments/website/__tests__/website-department.test.ts src/brain/departments/website/tests/BrandAnalyzer.test.ts src/brain/departments/website/tests/UserJourneyPlanner.test.ts src/brain/departments/website/tests/InformationArchitecturePlanner.test.ts src/brain/departments/website/tests/SEOPlanner.test.ts src/brain/departments/website/tests/ContentPlanner.test.ts src/brain/departments/website/tests/WebsiteGenerator.test.ts"
   },
   "dependencies": {
     "@next/third-parties": "^16.2.10",

@@ -1,9 +1,5 @@
 import type { ProjectRequest } from "../../types/project";
-import type {
-  BusinessAnalysisOutput,
-  PricingOutput,
-  SalesDepartmentResult,
-} from "../../types/sales";
+import type { SalesDepartmentResult } from "../../types/sales";
 import type { Proposal } from "../../departments/sales/proposal/schema";
 import { getKnowledgeRegistry } from "../../knowledge";
 import { BusinessAnalysisEngine } from "../business-analysis";

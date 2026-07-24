@@ -72,6 +72,7 @@ export class OutputAssembler {
       }));
 
     const feedbackMeta = OutputAssembler.resolveFeedbackMeta(input);
+    const blueprint = plannerOutputs.websiteBlueprint;
 
     const websitePlan: WebsitePlan = {
       id: planId,
@@ -104,7 +105,9 @@ export class OutputAssembler {
         headline: `${input.request.clientName} — ${primaryGoal}`,
         supportingPoints: [...input.request.goals],
         differentiators: [`Specialized ${input.request.industry} expertise`],
-        proofPoints: ["Placeholder proof points pending Content Planner."],
+        proofPoints: blueprint
+          ? blueprint.pages[0]?.content.trustSignals ?? []
+          : ["Placeholder proof points pending Content Planner."],
       },
       brandPositioning: {
         positioningStatement: `${input.request.clientName} serves ${input.request.targetAudience} in ${input.request.country}.`,
@@ -137,20 +140,36 @@ export class OutputAssembler {
           phase: 1,
         },
       ],
-      analyticsRequirements: [
-        {
-          id: "analytics-form-submit",
-          event: "form_submit",
-          trigger: "Contact form submission",
-          pages: ["page-contact"],
-          kpiMapping: "kpi-conversion",
-          tooling: "ga4",
-        },
-      ],
-      assumptions: [
-        "Sprint 1 plan uses placeholder planner outputs.",
-        "Final content and design decisions occur in downstream build phase.",
-      ],
+      analyticsRequirements: blueprint
+        ? blueprint.analyticsRecommendations.map((recommendation) => ({
+            id: recommendation.id,
+            event: recommendation.event,
+            trigger: recommendation.trigger,
+            pages: recommendation.pages.map((slug) =>
+              slug === "home" ? "page-home" : `page-${slug}`,
+            ),
+            kpiMapping: recommendation.kpiMapping,
+            tooling: recommendation.tooling,
+          }))
+        : [
+            {
+              id: "analytics-form-submit",
+              event: "form_submit",
+              trigger: "Contact form submission",
+              pages: ["page-contact"],
+              kpiMapping: "kpi-conversion",
+              tooling: "ga4" as const,
+            },
+          ],
+      assumptions: blueprint
+        ? [
+            "Website blueprint generated from rule-based planners.",
+            "Build phase should implement blueprint pages, forms, and analytics events.",
+          ]
+        : [
+            "Sprint 1 plan uses placeholder planner outputs.",
+            "Final content and design decisions occur in downstream build phase.",
+          ],
       risks,
       successMetrics: [
         "Increase qualified lead submissions",
@@ -159,10 +178,16 @@ export class OutputAssembler {
       inputCompletenessScore: input.inputCompletenessScore,
       confidenceLevel,
       summary: `Website plan v${input.priorPlanVersion} for ${input.request.clientName} (${input.request.industry}).`,
-      nextSteps: [
-        "Review placeholder plan with stakeholders.",
-        "Implement Sprint 2 planners for brand, journey, and architecture depth.",
-      ],
+      nextSteps: blueprint
+        ? [
+            "Review website blueprint pages, forms, and CTA locations.",
+            "Implement build phase using blueprint components and analytics map.",
+          ]
+        : [
+            "Review placeholder plan with stakeholders.",
+            "Implement Sprint 2 planners for brand, journey, and architecture depth.",
+          ],
+      websiteBlueprint: blueprint,
     };
 
     const status = resolveDepartmentStatus(
@@ -176,7 +201,12 @@ export class OutputAssembler {
       status,
       generatedAt,
       websitePlan,
-      stepsExecuted: ["input-builder", ...WEBSITE_PLANNER_IDS, "output-assembler"],
+      stepsExecuted: [
+        "input-builder",
+        ...WEBSITE_PLANNER_IDS,
+        ...(blueprint ? (["website-generator"] as const) : []),
+        "output-assembler",
+      ],
       stepsSkipped: [],
       inputCompletenessScore: input.inputCompletenessScore,
       inputWarnings: [...input.inputWarnings],

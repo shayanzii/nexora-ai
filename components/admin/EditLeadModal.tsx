@@ -1,7 +1,7 @@
 "use client";
 
 import { Save, X } from "lucide-react";
-import { FormEvent, useEffect, useId, useState } from "react";
+import { FormEvent, useId, useState } from "react";
 import type { AdminLead } from "@/lib/admin/get-leads";
 import {
   LEAD_STATUSES,
@@ -48,24 +48,40 @@ function leadToForm(lead: AdminLead): EditLeadForm {
 }
 
 export function EditLeadModal({ lead, isSaving, error, onClose, onSave }: EditLeadModalProps) {
+  if (!lead) return null;
+
+  return (
+    <EditLeadModalForm
+      key={lead.id}
+      lead={lead}
+      isSaving={isSaving}
+      error={error}
+      onClose={onClose}
+      onSave={onSave}
+    />
+  );
+}
+
+type EditLeadModalFormProps = Omit<EditLeadModalProps, "lead"> & {
+  lead: AdminLead;
+};
+
+function EditLeadModalForm({
+  lead,
+  isSaving,
+  error,
+  onClose,
+  onSave,
+}: EditLeadModalFormProps) {
   const titleId = useId();
-  const [form, setForm] = useState<EditLeadForm | null>(lead ? leadToForm(lead) : null);
-
-  useEffect(() => {
-    if (lead) {
-      setForm(leadToForm(lead));
-    }
-  }, [lead]);
-
-  if (!lead || !form) return null;
+  const [form, setForm] = useState<EditLeadForm>(() => leadToForm(lead));
 
   function updateField<K extends keyof EditLeadForm>(key: K, value: EditLeadForm[K]) {
-    setForm((current) => (current ? { ...current, [key]: value } : current));
+    setForm((current) => ({ ...current, [key]: value }));
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!form) return;
     onSave(form);
   }
 

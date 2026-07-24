@@ -11,6 +11,24 @@ export type { BuiltWebsiteExecutionInput } from "./input-builder";
 
 export { OutputAssembler } from "./output-assembler";
 export { createPlaceholderPlannerOutputs } from "./placeholders";
+export { createWebsitePlannerOutputs } from "./planner-outputs";
+export { BrandAnalyzer } from "./analyzers/BrandAnalyzer";
+export { mapAnalyzerBrandToPlanBrand } from "./analyzers/brand-identity-mapper";
+export { resolveBrandStrategy } from "./analyzers/brand-strategy";
+export { UserJourneyPlanner } from "./planners/UserJourneyPlanner";
+export { mapPlannerUserJourneyToPlan } from "./planners/user-journey-mapper";
+export { resolveJourneyStrategy } from "./planners/journey-strategy";
+export { InformationArchitecturePlanner } from "./planners/InformationArchitecturePlanner";
+export { mapPlannerInformationArchitectureToPlan } from "./planners/information-architecture-mapper";
+export { resolveArchitectureStrategy } from "./planners/architecture-strategy";
+export { SEOPlanner } from "./planners/SEOPlanner";
+export { mapPlannerSeoPlanToPlan } from "./planners/seo-plan-mapper";
+export { resolveSeoStrategy } from "./planners/seo-strategy";
+export { ContentPlanner } from "./planners/ContentPlanner";
+export { mapPlannerContentPlanToPlan } from "./planners/content-plan-mapper";
+export { resolveContentStrategy } from "./planners/content-strategy";
+export { WebsiteGenerator } from "./generator/WebsiteGenerator";
+export type { WebsiteGeneratorInput } from "./generator/WebsiteGenerator";
 
 export {
   resolveDepartmentStatus,
@@ -71,7 +89,13 @@ export type {
   BuilderIssueType,
   InputSource,
   WebsitePlanSchemaVersion,
+  WebsiteBlueprint,
 } from "./schema";
+
+export type {
+  BlueprintPage,
+  BlueprintSiteMetadata,
+} from "./types/WebsiteBlueprint";
 
 // Register on module import — additive, does not modify Brain Runtime.
 import { registerWebsiteDepartment } from "./website-department";

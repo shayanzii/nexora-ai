@@ -117,9 +117,13 @@ function buildTaskAgentMap(
 
 function sortTasksForExecution(
   tasks: AgentTask[],
-  _executionOrder: string[],
-  _options: TaskQueueOptions,
+  executionOrder: string[],
+  options: TaskQueueOptions,
 ): AgentTask[] {
+  if (options.respectAgentOrder && executionOrder.length > 0) {
+    // Reserved for agent-order sorting; priority sort remains the default path.
+  }
+
   return [...tasks].sort((a, b) => a.priority - b.priority);
 }
 

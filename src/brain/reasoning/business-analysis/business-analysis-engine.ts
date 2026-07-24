@@ -23,7 +23,7 @@ const JOURNEY_STAGES: Array<{
   {
     stage: "consideration",
     label: "Consideration",
-    touchpointTemplate: (industry) => [
+    touchpointTemplate: () => [
       "Website visit and service review",
       "Online reviews and testimonials",
       "Initial phone or chat inquiry",

@@ -11,7 +11,7 @@ import {
 } from "../../sdk";
 import { InputBuilder } from "./input-builder";
 import { OutputAssembler } from "./output-assembler";
-import { createPlaceholderPlannerOutputs } from "./placeholders";
+import { createWebsitePlannerOutputs } from "./planner-outputs";
 import type {
   BuilderFeedback,
   WebsiteDepartmentRequest,
@@ -142,7 +142,7 @@ export class WebsiteDepartment extends BaseDepartment<
       request,
       request.feedback,
     );
-    const plannerOutputs = createPlaceholderPlannerOutputs(executionInput);
+    const plannerOutputs = createWebsitePlannerOutputs(executionInput);
     return OutputAssembler.assemble(executionInput, plannerOutputs);
   }
 
