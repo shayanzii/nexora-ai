@@ -75,6 +75,63 @@ export type {
 } from "./agents/ceo";
 
 export {
+  ProjectOrchestrator,
+  getProjectOrchestrator,
+  resetProjectOrchestrator,
+  TaskManager,
+  TaskQueue as OrchestratorTaskQueue,
+  planTasks,
+  buildExecutionGraph,
+  assignInitialTaskStatuses,
+  areDependenciesMet,
+  deriveDepartmentOrder,
+  getReadyTasks,
+  sortTasksByDependencies,
+  selectDepartments,
+  sortDepartments,
+  resolveDepartmentDependencies,
+  estimateCriticalPathDuration,
+  formatDepartmentChain,
+  createOrchestratorTask,
+  TASK_PRIORITIES,
+  TASK_PRIORITY_WEIGHT,
+  TASK_STATUSES,
+  isTerminalTaskStatus,
+  isExecutableTaskStatus,
+  OrchestratorError,
+  OrchestratorValidationError,
+  CyclicDependencyError,
+  TaskNotFoundError,
+  KNOWN_DEPARTMENTS,
+  DEPARTMENT_ORDER,
+  DEFAULT_DEPARTMENT_DEPENDENCIES,
+  SERVICE_DEPARTMENT_MAP,
+  DEPARTMENT_DURATION_HOURS,
+  DEPARTMENT_PRIORITY,
+} from "./orchestrator";
+
+export type {
+  OrchestratorInput,
+  OrchestratorLogEvent,
+  OrchestratorLogger,
+  TaskManagerLogEvent,
+  TaskManagerLogger,
+  TaskPlanInput,
+  DepartmentId,
+  KnownDepartmentId,
+  DepartmentSelectionInput,
+  ProjectExecutionPlan,
+  ExecutionGraph,
+  ExecutionGraphNode,
+  ExecutionGraphEdge,
+  OrchestratorTask,
+  TaskPriority,
+  TaskCreationInput,
+  TaskStatus,
+  OrchestratorErrorCode,
+} from "./orchestrator";
+
+export {
   buildQualificationPackage,
   calculateCompletenessScore,
   detectMissingFields,
@@ -105,7 +162,19 @@ export {
   PROPOSAL_EXAMPLE_PLUMBING_REQUEST,
   PROPOSAL_EXAMPLE_REQUESTS,
   PROPOSAL_EXAMPLE_RESTAURANT_REQUEST,
-} from "./departments/sales/proposal";
+  SalesAgent as SalesExecutionAgent,
+  getSalesAgent,
+  resetSalesAgent,
+  resolveSalesTask,
+  analyzeRequirements,
+  generateDiscoveryQuestions,
+  recommendServices as recommendSalesServices,
+  generateSalesProposal,
+  resolveServiceId,
+  SALES_SUPPORTED_SERVICES,
+  SALES_SERVICE_CATALOG,
+  DEPARTMENT_SERVICE_MAP,
+} from "./departments/sales";
 export type {
   Proposal,
   ProposalDeliverable,
@@ -113,7 +182,61 @@ export type {
   ProposalEngineResult,
   ProposalExampleKey,
   ProposalMilestone,
-} from "./departments/sales/proposal";
+  SalesAgentInput,
+  SalesAgentContext,
+  SalesResult,
+  SalesProposal,
+  SalesDiscoveryQuestion,
+  SalesServiceRecommendation,
+  RequirementAnalysis,
+  ProjectTask,
+  SalesErrorCode,
+} from "./departments/sales";
+export {
+  SalesError,
+  SalesValidationError,
+  SalesTaskNotFoundError,
+  SalesWrongDepartmentError,
+  SalesProposalError,
+} from "./departments/sales";
+
+export {
+  PricingEngine,
+  getPricingEngine,
+  resetPricingEngine,
+  calculatePricing,
+  calculateProfit,
+  buildPackages,
+  buildPaymentPlan,
+  recommendUpsells,
+  getPricingCatalog,
+  resetPricingCatalog,
+  DEFAULT_PRICING_CATALOG,
+  extractBudgetFromSalesText,
+  recommendPaymentPlanType,
+} from "./pricing";
+
+export type {
+  PricingResult,
+  PricingBreakdown,
+  PricingLineItem,
+  RecommendedPackage,
+  RecommendedAddOn,
+  RecommendedUpsell,
+  PaymentPlan,
+  PaymentPlanType,
+  PricingEngineInput,
+  PricingEngineOptions,
+  PricingServiceId,
+  PricingCatalogConfig,
+} from "./pricing";
+
+export {
+  PricingError,
+  PricingValidationError,
+  PricingCatalogError,
+  PricingCalculationError,
+} from "./pricing";
 
 export {
   createBrainRegistry,
@@ -192,6 +315,10 @@ export {
   WebsiteDepartment,
   registerWebsiteDepartment,
   getWebsiteDepartment,
+  WebsiteExecutionAgent,
+  getWebsiteExecutionAgent,
+  resetWebsiteExecutionAgent,
+  planWebsiteBlueprint,
   InputBuilder,
   OutputAssembler,
   createPlaceholderPlannerOutputs,
@@ -206,12 +333,27 @@ export type {
   WebsiteDepartmentResult,
   WebsiteDepartmentInputParams,
   WebsiteDepartmentOptions,
+  WebsiteExecutionBlueprint,
+  WebsiteExecutionAgentInput,
+  WebsiteType,
+  RecommendedStack,
+  ExecutionSeoPlan as SeoPlan,
+  ExecutionContentPlan as ContentPlan,
+  DesignSystemPlan,
+  PerformanceStrategy,
+  DeploymentPlan,
   BuilderFeedback,
   BrandIdentity,
   UserJourney,
   ArchitectureDecision,
   SiteModel,
   ConfidenceLevel,
+} from "./departments/website";
+
+export {
+  WebsiteExecutionError,
+  WebsiteExecutionValidationError,
+  WebsiteTaskNotFoundError,
 } from "./departments/website";
 
 export {

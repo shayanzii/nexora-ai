@@ -97,6 +97,58 @@ export type {
   BlueprintSiteMetadata,
 } from "./types/WebsiteBlueprint";
 
+export {
+  WebsiteExecutionAgent,
+  getWebsiteExecutionAgent,
+  resetWebsiteExecutionAgent,
+} from "./WebsiteExecutionAgent";
+
+export { planWebsiteBlueprint } from "./WebsitePlanner";
+
+export { planPages, resolveWebsiteType, buildSiteArchitecture } from "./PagePlanner";
+export { planNavigation } from "./NavigationPlanner";
+export { planSections } from "./SectionPlanner";
+export { planComponents, listComponentNames } from "./ComponentPlanner";
+export { planSeo } from "./SEOPlanner";
+export { planContent } from "./ContentPlanner";
+export { planDesignSystem } from "./DesignSystemPlanner";
+export { planTechStack } from "./TechStackPlanner";
+export {
+  planDeployment,
+  planPerformanceStrategy,
+  planResponsiveStrategy,
+} from "./DeploymentPlanner";
+
+export {
+  WebsiteExecutionError,
+  WebsiteExecutionValidationError,
+  WebsiteExecutionPlanningError,
+  WebsiteTaskNotFoundError,
+} from "./WebsiteErrors";
+
+export type { WebsiteExecutionErrorCode } from "./WebsiteErrors";
+
+export type {
+  WebsiteExecutionBlueprint,
+  WebsiteExecutionAgentInput,
+  WebsiteExecutionAgentOptions,
+  WebsiteExecutionAgentLogEvent,
+  WebsiteType,
+  RecommendedStack,
+  SiteArchitecturePlan,
+  NavigationPlan as ExecutionNavigationPlan,
+  PageSectionPlan,
+  ComponentPlan,
+  SeoPlan as ExecutionSeoPlan,
+  ContentPlan as ExecutionContentPlan,
+  DesignSystemPlan,
+  ResponsiveStrategy,
+  PerformanceStrategy,
+  DeploymentPlan,
+  WEBSITE_TYPES,
+  WEBSITE_TYPE_LABELS,
+} from "./WebsiteTypes";
+
 // Register on module import — additive, does not modify Brain Runtime.
 import { registerWebsiteDepartment } from "./website-department";
 registerWebsiteDepartment();
